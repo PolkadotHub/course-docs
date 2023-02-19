@@ -1,0 +1,14 @@
+---
+export interface ButtonProps {
+  href: string;
+  variant?: 'green' | 'purple';
+}
+
+const { href, variant = 'green' } = Astro.props;
+
+const backgroundColorClass = variant === 'green' ? 'bg-green' : 'bg-purple';
+---
+
+<a href={href} class:list={['inline-block rounded px-5 py-3', backgroundColorClass]}>
+  <slot />
+</a>
