@@ -1,0 +1,15 @@
+---
+export interface TeacherCardProps {
+  image: string;
+  name: string;
+  description: string;
+}
+
+const { image, name, description } = Astro.props;
+---
+
+<div class="w-72 sm:w-96">
+  <img src={image} alt={name} class="rounded-lg" />
+  <h2 class="text-green text-2xl font-medium my-3">{name}</h2>
+  <p class="text-xl">{description}</p>
+</div>
