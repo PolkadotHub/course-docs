@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+import { CourseTracker } from '../../components/CourseTracker.jsx';
+
+export async function getStaticPaths() {
+  const substrateCourseEntries = await getCollection('substrate');
+  return substrateCourseEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+type CourseEntriesByModule = CollectionEntry<'substrate'>[][];
+
+const substrateCourseEntries = await getCollection('substrate');
+const courseEntriesByModule = substrateCourseEntries.reduce((accumulator: CourseEntriesByModule, entry) => {
+  const [module, _] = entry.id.split('/');
+  const moduleNumber = Number(module);
+  if (accumulator[moduleNumber]) {
+    accumulator[moduleNumber].push(entry);
+  } else {
+    accumulator[moduleNumber] = [entry];
+  }
+  return accumulator;
+}, []);
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <div class="sm:hidden px-5 mt-4 mb-6">
+    <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
+  </div>
+  <div class="sm:grid sm:grid-cols-[1fr,2fr,1fr] sm:grid-rows-1 sm:mt-10">
+    <div />
+    <main class="px-5 space-y-4">
+      <Content />
+    </main>
+    <div class="sm:block hidden">
+      <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  h1 {
+    @apply text-black dark:text-white text-5xl font-bold mb-5;
+  }
+  p,li {
+    @apply text-lg;
+  }
+  ul {
+    @apply list-disc px-5;
+  }
+</style>
