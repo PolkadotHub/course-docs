@@ -3,6 +3,9 @@ module.exports = {
 	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		fontFamily: {
+			unbounded: ['Unbounded', 'system-ui', 'sans-serif']
+		},
 		extend: {
 			colors: {
 				green: {

@@ -1,14 +1,23 @@
-import { createSignal } from 'solid-js';
+import { createSignal, createEffect } from 'solid-js';
 
 export const DarkModeButton = () => {
-  const [darkMode, setDarkMode] = createSignal(true);
+  const startingDarkMode = typeof window !== undefined ? !!window.localStorage.getItem('dark') : true;
+  const [darkMode, setDarkMode] = createSignal(startingDarkMode);
+
+  createEffect(() => {
+    if (darkMode()) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  });
 
   const handleClick = () => {
     const isDarkMode = !darkMode();
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      window.localStorage.setItem('dark', 'true');
     } else {
-      document.documentElement.classList.remove('dark');
+      window.localStorage.removeItem('dark');
     }
     setDarkMode(isDarkMode);
   }
