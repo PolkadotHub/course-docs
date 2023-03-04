@@ -1,6 +1,7 @@
 ---
 title: Introducción
 module: 0
+checklist: ['¡Estoy pronto para empezar!']
 ---
 
 # Módulo 0 - Introducción
@@ -11,7 +12,7 @@ En este curso, vamos a:
 - Aprender los fundamentos de blockchain
 - Aprender los fundamentos del Rust
 - Aprender la framework para construir blockchains Substrate y FRAME
-- Construir una blockchain de aplicación usando Substrate
+- Construir una blockchain usando Substrate
 - Transformar nuestro proyecto en una parachain, conectandola a una relay chain
 Esto puede sonar como mucho, pero a lo largo del camino vamos a tener muchos cuestionarios para reforzar nuestro conocimiento, y referencias para indagar más.
 

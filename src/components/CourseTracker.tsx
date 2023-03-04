@@ -1,7 +1,7 @@
-import { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import clsx from 'clsx';
 import { Component, createSignal } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import courseProgress from './progress';
 
 type CourseEntriesByModule = CollectionEntry<'substrate'>[][];
 
@@ -13,8 +13,7 @@ export interface CourseTrackerProps {
 export const CourseTracker: Component<CourseTrackerProps> = (props) => {
   const [isOpen, setIsOpen] = createSignal(false);
   const [activeTab, setActiveTab] = createSignal(props.module);
-  // const startingProgress = typeof window !== undefined ? JSON.parse(window.localStorage.getItem('progress')) : [];
-  // const [progress, setProgress] = createStore(startingProgress);
+  const { progress } = courseProgress;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen());
@@ -27,7 +26,7 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
         <ChevronRight rotate={isOpen()} />
       </button>
       <div class={clsx(
-        'absolute border border-black bg-green top-full left-0 mt-4 w-full rounded-lg',
+        'absolute border border-black bg-green top-full left-0 mt-4 w-full rounded',
         'dark:border-white sm:m-0 sm:w-72 sm:block',
         isOpen() ? 'block' : 'hidden'
       )}>
@@ -49,7 +48,7 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
           {props.courseEntriesByModule[activeTab()].map((entry, index) => (
             <li>
               <a href={`/${entry.collection}/${entry.slug}`} class="inline-block w-full hover:underline flex items-center">
-                <Checkmark checked /> {index}. {entry.data.title}
+                <Checkmark checked={progress[entry.collection][activeTab()][index].done} /> {index}. {entry.data.title}
               </a>
             </li>
           ))}
@@ -71,6 +70,13 @@ interface CheckmarkProps {
   checked: boolean;
 }
 
-const Checkmark: Component<CheckmarkProps> = (props) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" classList={{ 'w-5 h-5 inline mr-1': true, 'bg-black clip-circle-40': !props.checked }}>
-  <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-</svg>;
+const Checkmark: Component<CheckmarkProps> = (props) => (
+  <div
+    classList={{
+      'h-5 w-5 mr-2 rounded-full flex items-center justify-center border border-black dark:border-white': true,
+      'bg-green': props.checked,
+      'bg-white dark:bg-black': !props.checked
+    }}>
+    {props.checked && <div class="w-3 h-1.5 border-l border-b border-black dark:border-white -rotate-45 -translate-y-1/4" />}
+  </div>
+);
