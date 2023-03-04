@@ -48,7 +48,7 @@ const { title } = Astro.props;
 
 <script>
   const isDarkMode = window.localStorage.getItem('dark');
-  if (isDarkMode) {
+  if (isDarkMode === null || isDarkMode === 'true') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');

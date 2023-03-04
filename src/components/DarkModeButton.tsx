@@ -1,7 +1,9 @@
 import { createSignal, createEffect } from 'solid-js';
 
 export const DarkModeButton = () => {
-  const startingDarkMode = typeof window !== undefined ? !!window.localStorage.getItem('dark') : true;
+  const startingDarkMode = typeof window !== undefined ? (
+    window.localStorage.getItem('dark') === null || window.localStorage.getItem('dark') === 'true'
+  ) : true;
   const [darkMode, setDarkMode] = createSignal(startingDarkMode);
 
   createEffect(() => {
@@ -17,7 +19,7 @@ export const DarkModeButton = () => {
     if (isDarkMode) {
       window.localStorage.setItem('dark', 'true');
     } else {
-      window.localStorage.removeItem('dark');
+      window.localStorage.setItem('dark', 'false');
     }
     setDarkMode(isDarkMode);
   }
