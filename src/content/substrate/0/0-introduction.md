@@ -1,7 +1,7 @@
 ---
 title: Introducción
 module: 0
-checklist: ['¡Estoy pronto para empezar!']
+checklist: ['¡Estoy pronto para empezar!', 'Este es otro checkbox', 'Este también']
 ---
 
 # Módulo 0 - Introducción
