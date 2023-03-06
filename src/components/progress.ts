@@ -6,14 +6,20 @@ import { groupEntriesByModule } from "../helpers";
 const substrateCourseEntries = await getCollection('substrate');
 const entriesByModule = groupEntriesByModule(substrateCourseEntries).map(
   (module) => module.map(
-    (entry) => entry.data.checklist.flatMap(
-      (_, index) => ({ [index]: false })
-    )
+    (entry) => Object.fromEntries((entry.data.checklist ?? ['default']).map(
+      (_, index) => [index, false]
+    ))
   )
 );
 
+type Entry = { [k: number]: boolean };
+type Module = Entry[];
+export interface Progress {
+  substrate: Module[];
+}
+
 const createProgress = () => {
-  const [progress, setProgress] = createStore({
+  const [progress, setProgress] = createStore<Progress>({
     substrate: entriesByModule,
   });
 

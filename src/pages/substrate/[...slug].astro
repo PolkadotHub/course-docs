@@ -28,16 +28,14 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <div class="sm:hidden px-5 mt-4 mb-6">
+  <div class="lg:hidden md:px-14 px-5 md:my-10 my-5">
     <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
   </div>
-  <div class="sm:grid sm:grid-cols-[1fr,2fr,1fr] sm:grid-rows-1 sm:mt-10">
+  <div class="md:px-10 lg:grid lg:grid-cols-[1fr,2fr,1fr] lg:grid-rows-1 lg:mt-10">
     <div />
-    <main class="px-5 space-y-4 mb-10">
+    <main class="px-4 space-y-4 mb-10">
       <Content />
-      {entry.data.checklist && (
-        <Checklist client:load items={entry.data.checklist} module={entry.data.module} entryNumber={entryIndex} />
-      )}
+      <Checklist client:load items={entry.data.checklist} module={entry.data.module} entryNumber={entryIndex} />
       {nextEntry && (
         <a
           class:list={[
@@ -52,7 +50,7 @@ const { Content } = await entry.render();
         </a>
       )}
     </main>
-    <div class="sm:block hidden">
+    <div class="lg:block hidden">
       <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
     </div>
   </div>
@@ -60,7 +58,7 @@ const { Content } = await entry.render();
 
 <style is:global>
   h1 {
-    @apply text-black dark:text-white text-5xl font-bold mb-5;
+    @apply text-black dark:text-white text-4xl sm:text-5xl font-bold mb-5;
   }
   p,li {
     @apply text-lg;

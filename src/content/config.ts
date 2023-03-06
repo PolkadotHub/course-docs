@@ -4,7 +4,7 @@ const substrateCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     module: z.number(),
-    checklist: z.array(z.string()),
+    checklist: z.array(z.string()).optional(),
   }),
 });
 

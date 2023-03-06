@@ -21,13 +21,13 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
 
   return (
     <div class="relative">
-      <button onClick={toggleOpen} class="flex items-center px-3 py-1 bg-green rounded sm:hidden">
+      <button onClick={toggleOpen} class="flex items-center px-3 py-1 bg-green rounded lg:hidden">
         <span class="text-white">Progreso</span>
         <ChevronRight rotate={isOpen()} />
       </button>
       <div class={clsx(
         'absolute border border-black bg-green top-full left-0 mt-4 w-full rounded',
-        'dark:border-white sm:m-0 sm:w-72 sm:block',
+        'dark:border-white lg:m-0 lg:w-72 lg:block',
         isOpen() ? 'block' : 'hidden'
       )}>
         <ul class="list-none flex p-0">
@@ -45,13 +45,18 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
           ))}
         </ul>
         <ul class="list-none dark:bg-green-dark bg-green-light p-2 rounded-b">
-          {props.courseEntriesByModule[activeTab()].map((entry, index) => (
-            <li>
-              <a href={`/${entry.collection}/${entry.slug}`} class="inline-block w-full hover:underline flex items-center">
-                <Checkmark checked={progress[entry.collection][activeTab()][index].done} /> {index}. {entry.data.title}
-              </a>
-            </li>
-          ))}
+          {props.courseEntriesByModule[activeTab()].map((entry, index) => {
+            const checklist = progress[entry.collection][activeTab()][index];
+            const isChecked = Object.values(checklist).every((check) => check);
+            
+            return (
+              <li>
+                <a href={`/${entry.collection}/${entry.slug}`} class="inline-block w-full hover:underline flex items-center">
+                  <Checkmark checked={isChecked} /> {index}. {entry.data.title}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </div>
