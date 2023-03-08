@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
+import Video from '../../components/Video.astro';
 import { CourseTracker } from '../../components/CourseTracker';
 import { Checklist } from '../../components/Checklist';
 import { groupEntriesByModule } from '../../helpers';
@@ -16,7 +17,6 @@ export async function getStaticPaths() {
 
 const substrateCourseEntries = await getCollection('substrate');
 const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
-console.log('Course entries:', courseEntriesByModule);
 
 const { entry } = Astro.props;
 
