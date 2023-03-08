@@ -4,23 +4,41 @@ import { getCollection } from 'astro:content';
 import { groupEntriesByModule } from "../helpers";
 
 const substrateCourseEntries = await getCollection('substrate');
-const entriesByModule = groupEntriesByModule(substrateCourseEntries).map(
+const entriesByModule = groupEntriesByModule(substrateCourseEntries);
+const startingChecklist = entriesByModule.map(
   (module) => module.map(
     (entry) => Object.fromEntries((entry.data.checklist ?? ['default']).map(
       (_, index) => [index, false]
     ))
   )
 );
+const startingQuiz = entriesByModule.map(
+  (module) => module.map(
+    (entry) => Object.fromEntries((entry.data.quiz ?? []).map(
+      (_, index) => [index, 0]
+    ))
+  )
+);
 
-type Entry = { [k: number]: boolean };
-type Module = Entry[];
+type EntryCheckbox = { [k: number]: boolean };
+type ModuleCheckbox = EntryCheckbox[];
+
+type EntryRadio = { [k: number]: number };
+type ModuleRadio = EntryRadio[];
+
 export interface Progress {
-  substrate: Module[];
+  substrate: {
+    checklist: ModuleCheckbox[];
+    quiz: ModuleRadio[];
+  }
 }
 
 const createProgress = () => {
   const [progress, setProgress] = createStore<Progress>({
-    substrate: entriesByModule,
+    substrate: {
+      checklist: startingChecklist,
+      quiz: startingQuiz,
+    },
   });
 
   createEffect(() => {
