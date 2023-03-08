@@ -46,7 +46,7 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
         </ul>
         <ul class="list-none dark:bg-green-dark bg-green-light p-2 rounded-b">
           {props.courseEntriesByModule[activeTab()].map((entry, index) => {
-            const checklist = progress[entry.collection][activeTab()][index];
+            const checklist = progress[entry.collection].checklist[activeTab()][index];
             const isChecked = Object.values(checklist).every((check) => check);
             
             return (

@@ -11,12 +11,13 @@ export const Checklist: Component<ChecklistProps> = (props) => {
   const { progress, setProgress } = courseProgress;
 
   const handleChange = (checkboxIndex: number) => {
-    setProgress('substrate', props.module, props.entryNumber, checkboxIndex, (done) => !done);
+    setProgress('substrate', 'checklist', props.module, props.entryNumber, checkboxIndex, (done) => !done);
     window.localStorage.setItem('progress', JSON.stringify(progress));
   };
   
   return (
-    <div class="flex items-center bg-green-light dark:bg-green-dark p-5 border border-black dark:border-white rounded my-5">
+    <div class="flex flex-col justify-center bg-green-light dark:bg-green-dark p-5 border border-black dark:border-white rounded my-5">
+      <h1 class="text-2xl mb-4">Checklist</h1>
       <ul class="list-none p-0">
         {props.items ? (
           <For each={props.items}>
@@ -62,7 +63,7 @@ const ChecklistItem: Component<ChecklistItemProps> = (props) => (
         type="checkbox"
         class="rounded border border-black dark:border-white h-6 w-6 mr-4 accent-green"
         onChange={() => props.onChange(props.index)}
-        checked={props.progress.substrate[props.module][props.entryNumber][props.index]}
+        checked={props.progress.substrate.checklist[props.module][props.entryNumber][props.index]}
       />
       {props.text}
     </label>

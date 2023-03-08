@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import Video from '../../components/Video.astro';
 import { CourseTracker } from '../../components/CourseTracker';
 import { Checklist } from '../../components/Checklist';
+import { Quiz } from '../../components/Quiz';
 import { groupEntriesByModule } from '../../helpers';
 
 export async function getStaticPaths() {
@@ -35,6 +36,9 @@ const { Content } = await entry.render();
     <div />
     <main class="px-4 space-y-4 mb-10">
       <Content />
+      {entry.data.quiz && (
+        <Quiz client:load questions={entry.data.quiz} module={entry.data.module} entryNumber={entryIndex} />
+      )}
       <Checklist client:load items={entry.data.checklist} module={entry.data.module} entryNumber={entryIndex} />
       {nextEntry && (
         <a
