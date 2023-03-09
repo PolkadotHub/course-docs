@@ -4,6 +4,7 @@ import Card from '../components/Card.astro';
 import TeacherCard from '../components/TeacherCard.astro';
 import { Button } from '../components/Button';
 import LinkButton from '../components/LinkButton.astro';
+import { RegisterFormButton } from '../components/RegisterFormButton';
 ---
 
 <Layout title="Aprende Substrate">
@@ -40,7 +41,7 @@ import LinkButton from '../components/LinkButton.astro';
   						<li>Certificado de finalización</li>
   					</ul>
           </div>
-					<LinkButton href="/substrate/book">Reservar mi cupo</LinkButton>
+          <RegisterFormButton client:load />
 				</Card>
 			</div>
 		</section>
