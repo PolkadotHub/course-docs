@@ -3,6 +3,7 @@ import { z, defineCollection } from 'astro:content';
 const questionSchema = z.object({
   text: z.string(),
   options: z.array(z.string()),
+  correctOption: z.number(),
 });
 
 const checklistSchema = z.array(z.string());

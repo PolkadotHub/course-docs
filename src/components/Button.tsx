@@ -18,7 +18,7 @@ const getBackgroundColorClass = (variant: NonNullable<ButtonProps['variant']>) =
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-  const merged = mergeProps({ variant: 'green' }, props);
+  const merged = mergeProps({ variant: 'green' as const }, props);
   const backgroundColorClass = getBackgroundColorClass(merged.variant);
   
   return (
