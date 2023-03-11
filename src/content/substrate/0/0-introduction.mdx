@@ -5,16 +5,17 @@ checklist: ['¡Estoy pronto para empezar!', 'Este es otro checkbox', 'Este tambi
 quiz: [
 	{
 		text: '¿Qué aprendiste?',
-		options: ['Un montón', 'No mucho']
+		options: ['Un montón', 'No mucho'],
+		correctOption: 0,
 	},
 	{
 		text: '¿En serio?',
-		options: ['Si', 'No']
-	}
+		options: ['Si', 'No'],
+		correctOption: 0,
+	},
 ]
 ---
 
-import Video from '../../../components/Video.astro';
 import File from '../../../components/File.astro';
 
 # Módulo 0 - Introducción
@@ -28,12 +29,6 @@ En este curso, vamos a:
 - Construir una blockchain usando Substrate
 - Transformar nuestro proyecto en una parachain, conectandola a una relay chain
 Esto puede sonar como mucho, pero a lo largo del camino vamos a tener muchos cuestionarios para reforzar nuestro conocimiento, y referencias para indagar más.
-
-Acá hay un video en el medio, re loco.
-
-<Video source="/test.mp4" />
-
-Acá va una file, ojo que te la perdes.
 
 <File filename="test.txt" source="/test.txt" />
 
