@@ -1,53 +1,68 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import TeacherCard from '../components/TeacherCard.astro';
-import { Button } from '../components/Button';
-import LinkButton from '../components/LinkButton.astro';
-import { RegisterFormButton } from '../components/RegisterFormButton';
+import Layout from "../layouts/SubstrateLayout.astro";
+import Card from "../components/Card.astro";
+import TeacherCard from "../components/TeacherCard.astro";
+import { Button } from "../components/Button";
+import LinkButton from "../components/LinkButton.astro";
+import { RegisterFormButton } from "../components/RegisterFormButton";
 ---
 
 <Layout title="Aprende Substrate">
   <main class="mx-auto space-y-16 my-10 sm:space-y-24 sm:my-20">
-		<section id="intro">
-			<h1 class="text-6xl sm:text-7xl text-end sm:text-center mb-4 sm:mb-8 mr-4 text-black dark:text-white"><span class="text-3xl opacity-80 font-semibold sm:block">Aprende</span><br class="sm:hidden" />Substrate</h1>
-			<hr class="bg-green border-none h-2 mb-5 sm:mb-10 ml-4 sm:w-1/2 sm:m-auto">
-			<h2 class="text-black dark:text-white text-center mx-4">Curso no oficial en español para aprender Substrate desde 0</h2>
-		</section>
-		<section id="how-it-works" class="space-y-4 sm:space-y-8">
-			<h1 class="px-2 text-center text-green">¿Cómo funciona?</h1>
-			<div class="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 sm:items-start items-center space-y-4 sm:space-y-0">
-				<Card>
+    <section id="intro">
+      <h1
+        class="text-6xl sm:text-7xl text-end sm:text-center mb-4 sm:mb-8 mr-4 text-black dark:text-white"
+      >
+        <span class="text-3xl opacity-80 font-semibold sm:block">Aprende</span
+        ><br class="sm:hidden" />Substrate
+      </h1>
+      <hr
+        class="bg-green border-none h-2 mb-5 sm:mb-10 ml-4 sm:w-1/2 sm:m-auto"
+      />
+      <h2 class="text-black dark:text-white text-center mx-4">
+        Curso no oficial en español para aprender Substrate desde 0
+      </h2>
+    </section>
+    <section id="how-it-works" class="space-y-4 sm:space-y-8">
+      <h1 class="px-2 text-center text-green">¿Cómo funciona?</h1>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 sm:items-start items-center space-y-4 sm:space-y-0"
+      >
+        <Card>
           <div>
-  					<h2 class="text-green text-center pb-3">Modalidad libre</h2>
-  					<ul class="list-disc px-6">
-  						<li>Aprende desde los fundamentos</li>
-  						<li>Apoyo de la comunidad de discord</li>
-  						<li>Aprende a tu propio ritmo</li>
-  					</ul>
+            <h2 class="text-green text-center pb-3">Modalidad libre</h2>
+            <ul class="list-disc px-6">
+              <li>Aprende desde los fundamentos</li>
+              <li>Apoyo de la comunidad de discord</li>
+              <li>Aprende a tu propio ritmo</li>
+            </ul>
           </div>
-					<LinkButton href="/substrate/0/0-introduction">Ir al contenido</LinkButton>
-				</Card>
-				<Card>
+          <LinkButton href="/substrate/0/0-introduction">
+            Ir al contenido
+          </LinkButton>
+        </Card>
+        <Card>
           <div>
-  					<h2 class="text-green text-center pb-3">Modalidad curso</h2>
-  					<ul class="list-disc px-6">
-  						<li>Aprende desde los fundamentos</li>
-  						<li>Apoyo de la comunidad de discord</li>
-  						<li>Duración 6 semanas</li>
-  						<li>Exposición remota semanal</li>
-  						<li>Q&A con tutores</li>
-  						<li>Exámenes</li>
-  						<li>Certificado de finalización</li>
-  					</ul>
+            <h2 class="text-green text-center pb-3">Modalidad curso</h2>
+            <ul class="list-disc px-6">
+              <li>Aprende desde los fundamentos</li>
+              <li>Apoyo de la comunidad de discord</li>
+              <li>Duración 6 semanas</li>
+              <li>Exposición remota semanal</li>
+              <li>Q&A con tutores</li>
+              <li>Exámenes</li>
+              <li>Certificado de finalización</li>
+            </ul>
           </div>
           <RegisterFormButton client:load />
-				</Card>
-			</div>
-		</section>
-		<section id="teachers" class="space-y-4 sm:space-y-8">
+        </Card>
+      </div>
+    </section>
+    <section id="teachers" class="space-y-4 sm:space-y-8">
       <h1 class="text-center mr-4 text-green">Tutores</h1>
-			<div class="flex flex-col justify-center items-center text-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+      <div
+        class="flex flex-col justify-center items-center text-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8"
+      >
         <TeacherCard
           name="Alejandro Acero"
           description="Desarrollador Web3 Participante de la Polkadot Blockchain Academy"
@@ -60,14 +75,17 @@ import { RegisterFormButton } from '../components/RegisterFormButton';
         />
       </div>
     </section>
-    <section id="want-more" class="flex flex-col items-center space-y-4 sm:space-y-8 mb-4 sm:mb-8">
+    <section
+      id="want-more"
+      class="flex flex-col items-center space-y-4 sm:space-y-8 mb-4 sm:mb-8"
+    >
       <h1 class="text-green text-center">¿Ganas de más?</h1>
       <ul class="w-72 sm:w-96 list-disc px-6">
         <li>Documentación oficial de Substrate y Polkadot</li>
         <li>Cursos complementarios de Ink y Rust</li>
         <li>Preguntar en el discord!</li>
       </ul>
-      <Button>Ir al discord</Button>
+      <Button onClick={}>Ir al discord</Button>
     </section>
   </main>
 </Layout>
@@ -81,7 +99,8 @@ import { RegisterFormButton } from '../components/RegisterFormButton';
     @apply text-2xl font-medium;
     @apply sm:text-3xl;
   }
-  p,li {
+  p,
+  li {
     @apply text-lg;
   }
 </style>

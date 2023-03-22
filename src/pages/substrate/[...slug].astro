@@ -1,61 +1,100 @@
 ---
-import { getCollection } from 'astro:content';
-
-import Layout from '../../layouts/Layout.astro';
-import Video from '../../components/Video.astro';
-import { CourseTracker } from '../../components/CourseTracker';
-import { Checklist } from '../../components/Checklist';
-import { Quiz } from '../../components/Quiz';
-import { groupEntriesByModule } from '../../helpers';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/SubstrateLayout.astro";
+import { CourseTracker } from "../../components/CourseTracker";
+import { Checklist } from "../../components/Checklist";
+import { Quiz } from "../../components/Quiz";
+import { groupEntriesByModule } from "../../helpers";
 
 export async function getStaticPaths() {
-  const substrateCourseEntries = await getCollection('substrate');
+  const substrateCourseEntries = await getCollection("substrate");
   return substrateCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry }
+    props: { entry },
   }));
 }
 
-const substrateCourseEntries = await getCollection('substrate');
+const substrateCourseEntries = await getCollection("substrate");
 const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
 
 const { entry } = Astro.props;
 
 const moduleEntries = courseEntriesByModule[entry.data.module];
-const entryIndex = moduleEntries.findIndex((moduleEntry) => moduleEntry.id === entry.id);
-const nextEntry = entryIndex === moduleEntries.length - 1 ? courseEntriesByModule[entry.data.module + 1]?.[0] : moduleEntries[entryIndex + 1];
+const entryIndex = moduleEntries.findIndex(
+  (moduleEntry) => moduleEntry.id === entry.id
+);
+const nextEntry =
+  entryIndex === moduleEntries.length - 1
+    ? courseEntriesByModule[entry.data.module + 1]?.[0]
+    : moduleEntries[entryIndex + 1];
 
 const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
   <div class="lg:hidden md:px-14 px-5 md:my-10 my-5">
-    <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
+    <CourseTracker
+      client:load
+      module={entry.data.module}
+      courseEntriesByModule={courseEntriesByModule}
+    />
   </div>
-  <div class="md:px-10 lg:grid lg:grid-cols-[1fr,2fr,1fr] lg:grid-rows-1 lg:mt-10">
-    <div />
+  <div
+    class="md:px-10 lg:grid lg:grid-cols-[1fr,2fr,1fr] lg:grid-rows-1 lg:mt-10"
+  >
+    <div></div>
     <main class="px-4 space-y-4 mb-10">
       <Content />
-      {entry.data.quiz && (
-        <Quiz client:load questions={entry.data.quiz} module={entry.data.module} entryNumber={entryIndex} />
-      )}
-      <Checklist client:load items={entry.data.checklist} module={entry.data.module} entryNumber={entryIndex} />
-      {nextEntry && (
-        <a
-          class:list={[
-            "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
-            "dark:border-white dark:bg-green-dark hover:underline"
-          ]}
-          href={`/${nextEntry.collection}/${nextEntry.slug}`}>
-          Siguiente página
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-      )}
+      {
+        entry.data.quiz && (
+          <Quiz
+            client:load
+            questions={entry.data.quiz}
+            module={entry.data.module}
+            entryNumber={entryIndex}
+          />
+        )
+      }
+      <Checklist
+        client:load
+        items={entry.data.checklist}
+        module={entry.data.module}
+        entryNumber={entryIndex}
+      />
+      {
+        nextEntry && (
+          <a
+            class:list={[
+              "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
+              "dark:border-white dark:bg-green-dark hover:underline",
+            ]}
+            href={`/${nextEntry.collection}/${nextEntry.slug}`}
+          >
+            Siguiente página
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 inline"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </a>
+        )
+      }
     </main>
     <div class="lg:block hidden">
-      <CourseTracker client:load module={entry.data.module} courseEntriesByModule={courseEntriesByModule} />
+      <CourseTracker
+        client:load
+        module={entry.data.module}
+        courseEntriesByModule={courseEntriesByModule}
+      />
     </div>
   </div>
 </Layout>
@@ -64,7 +103,8 @@ const { Content } = await entry.render();
   h1 {
     @apply text-black dark:text-white text-4xl sm:text-5xl font-bold mb-5;
   }
-  p,li {
+  p,
+  li {
     @apply text-lg;
   }
   ul {
