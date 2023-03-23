@@ -3,14 +3,7 @@ import { navItems } from "../data/navItems";
 import { DarkModeButton } from "./DarkModeButton.jsx";
 ---
 
-<div class="hidden sm:flex space-x-8 items-center h-full">
-  <a href="/" class="h-full inline-block">
-    <img
-      src="/assets/polkadot-hub-logo.png"
-      alt="Polkadot Hub"
-      class="h-full p-2"
-    />
-  </a>
+<div class="hidden sm:flex space-x-8 items-center h-full py-2 px-4">
   {navItems.map((navItem) => <a href={navItem.href}>{navItem.text}</a>)}
 </div>
 <div class="hidden sm:flex px-3 items-center">
