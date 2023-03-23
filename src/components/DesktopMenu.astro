@@ -3,9 +3,11 @@ import { navItems } from "../data/navItems";
 import { DarkModeButton } from "./DarkModeButton.jsx";
 ---
 
-<div class="hidden sm:flex space-x-8 items-center h-full py-2 px-4">
-  {navItems.map((navItem) => <a href={navItem.href}>{navItem.text}</a>)}
-</div>
-<div class="hidden sm:flex px-3 items-center">
-  <DarkModeButton client:only />
+<div class="sm:flex justify-between w-full hidden">
+  <div class="hidden sm:flex space-x-8 items-center h-full py-2 px-4">
+    {navItems.map((navItem) => <a href={navItem.href}>{navItem.text}</a>)}
+  </div>
+  <div class="hidden sm:flex px-3 items-center">
+    <DarkModeButton client:only />
+  </div>
 </div>
