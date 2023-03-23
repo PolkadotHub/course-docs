@@ -11,20 +11,26 @@ import LinkButton from "../components/LinkButton.astro";
         Aprende Polkadot
       </h1>
       <h2 class="text-black dark:text-white text-center mx-4">
-        PolkadotHub ofrece cursos en línea para aprender a construir aplicaciones blockchain en la red de Polkadot
+        PolkadotHub ofrece cursos en línea para aprender a construir
+        aplicaciones blockchain en la red de Polkadot
       </h2>
     </section>
     <section id="tracks" class="flex flex-col items-center justify-center">
       <h1 class="px-2 text-center text-pink mb-4">Tracks</h1>
-      <div class="flex flex-col sm:flex-row flex-wrap gap-8 items-center justify-center list-inside mb-8">
+      <div
+        class="flex flex-col sm:flex-row flex-wrap gap-8 items-center justify-center list-inside mb-8"
+      >
         <Card color="orange" layoutClassName="space-y-4 sm:!h-[32rem] !w-80">
-          <h2 class="text-black dark:text-white font-medium">
-              Rust
-          </h2>
+          <h2 class="text-black dark:text-white font-medium">Rust</h2>
           <ul class="list-disc px-6">
             <li>Diseñado para seguridad, rendimiento y concurrencia</li>
-            <li>Ideal para software rápido y confiable en programación a nivel de sistema y red</li>
-            <li>Popular y adoptado por empresas y comunidad de desarrolladores</li>
+            <li>
+              Ideal para software rápido y confiable en programación a nivel de
+              sistema y red
+            </li>
+            <li>
+              Popular y adoptado por empresas y comunidad de desarrolladores
+            </li>
           </ul>
           <LinkButton
             href="https://forms.gle/A6FygYnyGy9B5VGR9"
@@ -35,58 +41,65 @@ import LinkButton from "../components/LinkButton.astro";
           </LinkButton>
         </Card>
         <Card layoutClassName="space-y-4 !w-80 sm:!h-[32rem]">
-          <h2 class="text-black dark:text-white font-medium">
-            Substrate
-          </h2>
+          <h2 class="text-black dark:text-white font-medium">Substrate</h2>
           <ul class="list-disc px-6">
             <li>Framework escrita en Rust</li>
             <li>Permite crear blockchains personalizadas y escalables</li>
-            <li>Incluye módulos preconstruidos para la gestión de identidad, gobernanza y más</li>
+            <li>
+              Incluye módulos preconstruidos para la gestión de identidad,
+              gobernanza y más
+            </li>
           </ul>
           <LinkButton variant="green" disabled>Proximamente</LinkButton>
         </Card>
         <Card color="purple" layoutClassName="space-y-4 !w-80 sm:!h-[32rem]">
-          <h2 class="text-black dark:text-white font-medium">
-            Ink!
-          </h2>
+          <h2 class="text-black dark:text-white font-medium">Ink!</h2>
           <ul class="list-disc px-6">
             <li>Lenguaje de smart contracts escrito en Rust</li>
             <li>Optimizado para blockchains escritas en Substrate</li>
-            <li>Permite la creación de contratos inteligentes seguros y eficientes</li>
+            <li>
+              Permite la creación de contratos inteligentes seguros y eficientes
+            </li>
           </ul>
           <LinkButton variant="purple" disabled>Proximamente</LinkButton>
         </Card>
-      </ul>
+      </div>
     </section>
-    <section id="how-it-works" class="flex flex-col items-center justify-center">
+    <section
+      id="how-it-works"
+      class="flex flex-col items-center justify-center"
+    >
       <h1 class="text-center mr-4 mb-4">Modalidad</h1>
-      <p class="sm:mx-32 text-center text-xl mb-4">Los cursos disponen de dos modalidades:</p>
+      <p class="sm:mx-32 text-center text-xl mb-4">
+        Los cursos disponen de dos modalidades:
+      </p>
       <div class="sm:mx-32 flex flex-col sm:flex-row flex-wrap gap-8">
         <Card color="pink" layoutClassName="space-y-4 !w-80">
           <h2 class="text-2xl text-black dark:text-white">Autodidacta</h2>
           <p>
-            Se puede seguir el curso a ritmo propio, revisando la
-            documentación disponible en la página web y visualizando los videos
-            que se encuentran en el canal de YouTube.
+            Se puede seguir el curso a ritmo propio, revisando la documentación
+            disponible en la página web y visualizando los videos que se
+            encuentran en el canal de YouTube.
           </p>
-          <div />
+          <div></div>
         </Card>
         <Card color="pink" layoutClassName="space-y-4 !w-80">
           <h2 class="text-2xl text-black dark:text-white">Con Seguimiento</h2>
           <p>
-            Estar atentos a los anuncios publicados en Discord,
-            donde se informará sobre la disponibilidad de modalidades con
-            evaluación, office hours y certificadas.
+            Estar atentos a los anuncios publicados en Discord, donde se
+            informará sobre la disponibilidad de modalidades con evaluación,
+            office hours y certificadas.
           </p>
-          <div />
+          <div></div>
         </Card>
-      </ul>
+      </div>
     </section>
     <section id="how-to-join" class="flex flex-col items-center justify-center">
       <h1 class="text-center mr-4 mb-4">¿Cómo inscribirse?</h1>
       <p class="sm:mx-32 mx-8 text-center text-lg mb-8">
         Actualmente se encuentran abiertas las inscripciones al curso de Rust.
-        Simplemente completa nuestro y aguarda instrucciones. ¡Hay cupos limitados!
+        Simplemente completa el formulario y aguarda instrucciones. ¡Hay cupos
+        limitados!
       </p>
       <div class="flex items-center justify-center">
         <LinkButton
