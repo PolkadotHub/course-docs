@@ -15,9 +15,20 @@ module.exports = {
         },
         pink: {
           DEFAULT: "#E6007A",
-          dark: "#E6007A",
+          dark: "#A71756",
           light: "#E6007A",
         },
+        purple: {
+          DEFAULT: "#552BBF",
+          dark: "#442299",
+          darkMode: "#1C0533",
+          light: "#6D3AEE",
+        },
+        orange: {
+          DEFAULT: "#E33B26",
+          dark: "#8F1F1D",
+          light: "#F58400",
+        }
       },
     },
   },

@@ -1,14 +1,26 @@
 ---
 export interface ButtonProps {
   href: string;
-  variant?: 'green' | 'purple';
+  variant?: 'green' | 'purple' | 'orange' | 'pink';
 }
 
-const { href, variant = 'green' } = Astro.props;
+const { target, href, disabled, variant = 'green' } = Astro.props;
 
-const backgroundColorClass = variant === 'green' ? 'bg-green' : 'bg-purple';
+const getColorClassName = (color: 'green' | 'pink' | 'purple' | 'orange') => {
+	if (color === 'green') {
+		return 'bg-green';
+	} else if (color === 'pink') {
+		return 'bg-pink';
+	} else if (color === 'purple') {
+		return 'bg-purple-light';
+	} else if (color === 'orange') {
+		return 'bg-orange';
+	}
+}
+
+const backgroundColorClass = getColorClassName(variant);
 ---
 
-<a href={href} class:list={['inline-block rounded px-5 py-3', backgroundColorClass]}>
+<a href={href} class:list={['inline-block rounded px-5 py-3', backgroundColorClass, disabled && 'opacity-50']} disabled={disabled} target={target}>
   <slot />
 </a>

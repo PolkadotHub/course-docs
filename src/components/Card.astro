@@ -1,3 +1,21 @@
-<div class="flex flex-col items-center sm:justify-between w-72 sm:w-96 sm:h-[27rem] bg-green-light dark:bg-green-dark rounded-lg p-5">
+---
+const { layoutClassName, color = 'green' } = Astro.props;
+
+const getColorClassName = (color: 'green' | 'pink' | 'purple' | 'orange') => {
+	if (color === 'green') {
+		return 'bg-green-light dark:bg-green-dark';
+	} else if (color === 'pink') {
+		return 'bg-pink-light dark:bg-pink-dark';
+	} else if (color === 'purple') {
+		return 'bg-purple-light dark:bg-purple-dark';
+	} else if (color === 'orange') {
+		return 'bg-orange-light dark:bg-orange-dark';
+	}
+}
+
+const colorClassName = getColorClassName(color);
+---
+
+<div class:list={["flex flex-col items-center sm:justify-between w-72 sm:w-96 sm:h-[27rem] rounded-lg p-5", colorClassName, layoutClassName]}>
 	<slot />
 </div>

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 export interface ButtonProps {
   onClick: () => void;
-  variant?: 'orange' | 'green' | 'purple';
+  variant?: 'orange' | 'green' | 'purple' | 'pink';
   children?: JSX.Element;
 }
 
@@ -13,6 +13,8 @@ const getBackgroundColorClass = (variant: NonNullable<ButtonProps['variant']>) =
     return 'bg-orange';
   } else if (variant === 'green') {
     return 'bg-green';
+  } else if (variant === 'pink') {
+    return 'bg-pink';
   }
   return 'bg-purple';
 }
