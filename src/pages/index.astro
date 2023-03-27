@@ -2,9 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import LinkButton from "../components/LinkButton.astro";
+
+// Layout styles
+const styles = {
+  body: "dark:bg-purple-darkMode",
+  nav: "flex bg-pink justify-between h-12 items-center",
+};
 ---
 
-<Layout title="PolkadotHub - Cursos">
+<Layout title="PolkadotHub - Cursos" styles={styles}>
   <main class="mx-auto space-y-16 my-10 sm:space-y-24 sm:my-20 sm:px-24">
     <section id="intro">
       <h1 class="text-6xl sm:text-7xl text-center mb-4 sm:mb-8 mr-4">

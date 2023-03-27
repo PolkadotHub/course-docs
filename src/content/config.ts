@@ -21,6 +21,8 @@ const inkCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     module: z.number(),
+    checklist: checklistSchema.optional(),
+    quiz: z.array(questionSchema).optional(),
   }),
 });
 
@@ -28,6 +30,8 @@ const rustCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     module: z.number(),
+    checklist: checklistSchema.optional(),
+    quiz: z.array(questionSchema).optional(),
   }),
 });
 

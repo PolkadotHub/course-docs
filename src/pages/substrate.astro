@@ -1,21 +1,24 @@
 ---
-import Layout from "../layouts/SubstrateLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import TeacherCard from "../components/TeacherCard.astro";
 import { Button } from "../components/Button";
 import LinkButton from "../components/LinkButton.astro";
-import { RegisterFormButton } from "../components/RegisterFormButton";
+
+// Layout styles
+const styles = {
+  body: "dark:bg-gray-900",
+  nav: "flex bg-green justify-between h-12 items-center",
+};
 ---
 
-<Layout title="Aprende Substrate">
+<Layout title="Aprende Substrate" styles={styles}>
   <main class="mx-auto space-y-16 my-10 sm:space-y-24 sm:my-20">
     <section id="intro">
       <h1
         class="text-6xl sm:text-7xl text-end sm:text-center mb-4 sm:mb-8 mr-4 text-black dark:text-white"
       >
-        <span class="text-3xl opacity-80 font-semibold sm:block">
-          Aprende
-        </span>
+        <span class="text-3xl opacity-80 font-semibold sm:block"> Aprende</span>
         <br class="sm:hidden" />
         Substrate
       </h1>
@@ -57,7 +60,6 @@ import { RegisterFormButton } from "../components/RegisterFormButton";
               <li>Certificado de finalización</li>
             </ul>
           </div>
-          <RegisterFormButton client:load />
         </Card>
       </div>
     </section>
@@ -88,7 +90,6 @@ import { RegisterFormButton } from "../components/RegisterFormButton";
         <li>Cursos complementarios de Ink y Rust</li>
         <li>Preguntar en el discord!</li>
       </ul>
-      <Button onClick={}>Ir al discord</Button>
     </section>
   </main>
 </Layout>

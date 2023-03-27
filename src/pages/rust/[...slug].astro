@@ -2,14 +2,13 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { CourseTracker } from "../../components/CourseTracker";
-import { Checklist } from "../../components/Checklist";
 import { Quiz } from "../../components/Quiz";
 import { groupEntriesByModule } from "../../helpers";
 import { Track } from "../../data/tracks";
 
 export async function getStaticPaths() {
-  const substrateCourseEntries = await getCollection("substrate");
-  return substrateCourseEntries.map((entry) => ({
+  const rustCourseEntries = await getCollection("rust");
+  return rustCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -17,11 +16,11 @@ export async function getStaticPaths() {
 
 const styles = {
   body: "dark:bg-gray-900",
-  nav: "flex bg-green justify-between h-12 items-center",
+  nav: "flex bg-orange justify-between h-12 items-center",
 };
 
-const substrateCourseEntries = await getCollection(Track.Substrate);
-const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
+const rustCourseEntries = await getCollection(Track.Rust);
+const courseEntriesByModule = groupEntriesByModule(rustCourseEntries);
 
 const { entry } = Astro.props;
 
@@ -43,7 +42,7 @@ const { Content } = await entry.render();
       client:load
       module={entry.data.module}
       courseEntriesByModule={courseEntriesByModule}
-      track={Track.Substrate}
+      track={Track.Rust}
     />
   </div>
   <div
@@ -62,18 +61,12 @@ const { Content } = await entry.render();
           />
         )
       }
-      <Checklist
-        client:load
-        items={entry.data.checklist}
-        module={entry.data.module}
-        entryNumber={entryIndex}
-      />
       {
         nextEntry && (
           <a
             class:list={[
-              "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
-              "dark:border-white dark:bg-green-dark hover:underline",
+              "inline-block w-full border rounded border-black p-5 bg-orange-light text-right",
+              "dark:border-white dark:bg-orange-dark hover:underline",
             ]}
             href={`/${nextEntry.collection}/${nextEntry.slug}`}
           >
@@ -101,7 +94,7 @@ const { Content } = await entry.render();
         client:load
         module={entry.data.module}
         courseEntriesByModule={courseEntriesByModule}
-        track={Track.Substrate}
+        track={Track.Rust}
       />
     </div>
   </div>

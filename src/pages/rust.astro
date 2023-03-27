@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LinkButton from "../components/LinkButton.astro";
+
+// Layout styles
+const styles = {
+  body: "dark:bg-gray-900",
+  nav: "flex bg-orange justify-between h-12 items-center",
+};
+---
+
+<Layout title="Aprende Substrate" styles={styles}>
+  <main class="mx-auto space-y-16 my-10 sm:space-y-24 sm:my-20">
+    <section id="intro">
+      <h1
+        class="text-6xl sm:text-7xl text-end sm:text-center mb-4 sm:mb-8 mr-4 text-black dark:text-white"
+      >
+        <span class="text-3xl opacity-80 font-semibold sm:block"> Aprende</span>
+        <br class="sm:hidden" />
+        Rust
+      </h1>
+      <hr
+        class="bg-orange border-none h-2 mb-5 sm:mb-10 ml-4 sm:w-1/2 sm:m-auto"
+      />
+    </section>
+    <section id="content" class="flex flex-col items-center justify-center">
+      <h1 class="text-center mr-4 mb-4 dark:text-white">
+        ¿Cómo accedo al contenido?
+      </h1>
+      <p class="sm:mx-32 mx-8 text-center text-lg mb-8">
+        Para acceder al contenido solo hace falta seguir el siguiente enlace!
+      </p>
+      <div class="flex items-center justify-center">
+        <LinkButton href="/rust/0/0-introduction" variant="orange">
+          Ir al contenido
+        </LinkButton>
+      </div>
+    </section>
+    <section id="how-to-join" class="flex flex-col items-center justify-center">
+      <h1 class="text-center mr-4 mb-4 dark:text-white">¿Cómo inscribirse?</h1>
+      <p class="sm:mx-32 mx-8 text-center text-lg mb-8">
+        Actualmente se encuentran abiertas las inscripciones al curso de Rust.
+        Simplemente completa el formulario y aguarda instrucciones. ¡Hay cupos
+        limitados!
+      </p>
+      <div class="flex items-center justify-center">
+        <LinkButton
+          href="https://forms.gle/A6FygYnyGy9B5VGR9"
+          target="_blank"
+          variant="orange"
+        >
+          Ir al formulario!
+        </LinkButton>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    @apply text-3xl font-bold;
+    @apply sm:text-5xl;
+  }
+  h2 {
+    @apply text-2xl font-medium;
+    @apply sm:text-3xl;
+  }
+  p,
+  li {
+    @apply text-lg;
+  }
+</style>

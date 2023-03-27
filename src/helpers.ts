@@ -1,9 +1,10 @@
-import type { CollectionEntry } from 'astro:content';
-
-type CourseEntriesByModule = CollectionEntry<'substrate'>[][];
+import type {
+  CourseEntries,
+  CourseEntriesByModule,
+} from './data/courseEntries';
 
 export const groupEntriesByModule = (
-  courseEntries: CollectionEntry<'substrate'>[]
+  courseEntries: CourseEntries
 ): CourseEntriesByModule => {
   return courseEntries.reduce((accumulator: CourseEntriesByModule, entry) => {
     const [module, _] = entry.id.split('/');
