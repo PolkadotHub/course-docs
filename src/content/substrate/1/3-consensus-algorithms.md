@@ -29,6 +29,6 @@ En el caso particular de Polkadot, uno puede apostar a la red sin tener un valid
 
 Proof of Stake es definitivamente más eficiente que Proof of Work y también más descentralizado, ya que permite la participación de más miembros en la red debido a la baja barrera de entrada. Sin embargo, cuenta con menor seguridad, ya que si más del 33% de los validadores no actúa de manera honesta, la red podría verse comprometida.
 
-# ¿Cuál es el mejor?
+# ¿Cuál es mejor?
 
 Ambos algoritmos tienen sus ventajas y desventajas y dependen del contexto en que se utilicen. Proof of Work es más seguro, pero también más centralizado y consume mucha energía. Proof of Stake es más eficiente y descentralizado, pero menos seguro. En última instancia, la elección del algoritmo de consenso depende de las necesidades y objetivos específicos del proyecto.

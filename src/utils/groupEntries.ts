@@ -1,7 +1,7 @@
 import type {
   CourseEntries,
   CourseEntriesByModule,
-} from './data/courseEntries';
+} from '../types/courseEntries';
 
 export const groupEntriesByModule = (
   courseEntries: CourseEntries

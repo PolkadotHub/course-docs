@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { Track } from './tracks';
+import type { Track } from '../data/tracks';
 
 export type CourseEntries =
   | CollectionEntry<Track.Ink>[]

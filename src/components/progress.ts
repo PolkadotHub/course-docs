@@ -1,7 +1,7 @@
 import { createEffect, createRoot } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { getCollection } from 'astro:content';
-import { groupEntriesByModule } from '../helpers';
+import { groupEntriesByModule } from '../utils/groupEntries';
 
 const substrateCourseEntries = await getCollection('substrate');
 const entriesByModule = groupEntriesByModule(substrateCourseEntries);

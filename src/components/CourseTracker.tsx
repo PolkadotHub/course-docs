@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
-import type { CourseEntriesByModule } from "../data/courseEntries";
+import type { CourseEntriesByModule } from "../types/courseEntries";
 import { Track } from "../data/tracks";
 import courseProgress from "./progress";
 
