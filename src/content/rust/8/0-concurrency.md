@@ -4,7 +4,7 @@ module: 7
 --- 
 # Manejo de Concurrencia en RUST
 
-Sí, claro. La programación concurrente es una de las principales fortalezas de Rust, gracias a su sistema de tipos y a su modelo de propiedad y préstamo de memoria.
+La programación concurrente es una de las principales fortalezas de Rust, gracias a su sistema de tipos y a su modelo de propiedad y préstamo de memoria.
 
 Rust ofrece varios mecanismos para manejar la programación concurrente de forma segura y eficiente:
 

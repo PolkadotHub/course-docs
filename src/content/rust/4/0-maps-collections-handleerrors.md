@@ -2,7 +2,7 @@
 title: Mapas, Colleciones y Manejo de Errores
 module: 5
 ---
-# Mapas, Colleciones y Manejo de Errores
+# Mapas, Colecciones y Manejo de Errores
 
 En Rust, los mapas son implementados como tipos genéricos. Existen dos tipos de mapas en Rust: HashMap y BTreeMap. Ambos permiten la asignación de valores a claves, pero difieren en la forma en que almacenan los elementos. HashMap utiliza una tabla hash para almacenar los elementos, lo que permite acceso rápido a los elementos por clave, mientras que BTreeMap almacena los elementos en un árbol de búsqueda binario, lo que garantiza que los elementos estén ordenados por clave.
 
