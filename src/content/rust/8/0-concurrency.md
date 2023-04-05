@@ -1,6 +1,6 @@
 ---
 title: Manejo de Concurrencia en RUST
-module: 7
+module: 8
 --- 
 # Manejo de Concurrencia en RUST
 

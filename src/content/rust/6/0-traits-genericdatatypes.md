@@ -1,6 +1,6 @@
 ---
 title: Traits y Tipo de Datos Genericos
-module: 5
+module: 6
 ---
 # Traits y Tipo de Datos Genericos
 

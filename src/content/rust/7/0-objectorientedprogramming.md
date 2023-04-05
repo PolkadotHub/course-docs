@@ -1,6 +1,6 @@
 ---
 title: Programación Orientada a Objetos con RUST
-module: 6
+module: 7
 ---
 # Programación Orientada a Objetos con RUST
 
