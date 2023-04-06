@@ -6,4 +6,4 @@ export type CourseEntries =
   | CollectionEntry<Track.Rust>[]
   | CollectionEntry<Track.Substrate>[];
 
-export type CourseEntriesByModule = CourseEntries[];
+export type ModuleWithEntries = { name: string, entries: CourseEntries }[];

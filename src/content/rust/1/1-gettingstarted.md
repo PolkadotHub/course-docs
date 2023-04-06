@@ -70,4 +70,6 @@ for i in 0..10 {
 ```
 
 Para más información y detalles:
-[![IMAGE_ALT](https://img.youtube.com/vi/MXQsZMi6hxs/0.jpg)](https://www.youtube.com/watch?v=MXQsZMi6hxs&list=PLnf2S4I9w85P-zimbgpCWJlTJZnY_4TmX)
+<div class="flex justify-center items-center">
+ <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/MXQsZMi6hxs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>

@@ -14,4 +14,4 @@ Aunque Rust no se considera un lenguaje de programación orientado a objetos en 
 
 
 Para más información y detalles:
-[![IMAGE_ALT](https://img.youtube.com/vi/yCeaQte_f8s/0.jpg)](https://www.youtube.com/watch?v=yCeaQte_f8s&list=PLnf2S4I9w85P-zimbgpCWJlTJZnY_4TmX&index=7)
+<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/yCeaQte_f8s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

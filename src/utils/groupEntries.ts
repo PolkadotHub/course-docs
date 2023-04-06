@@ -1,18 +1,27 @@
 import type {
   CourseEntries,
-  CourseEntriesByModule,
+  ModuleWithEntries,
 } from '../types/courseEntries';
 
 export const groupEntriesByModule = (
   courseEntries: CourseEntries
-): CourseEntriesByModule => {
-  return courseEntries.reduce((accumulator: CourseEntriesByModule, entry) => {
+): ModuleWithEntries => {
+  return courseEntries.reduce((accumulator: ModuleWithEntries, entry) => {
     const [module, _] = entry.id.split('/');
-    const moduleNumber = Number(module);
+
+    const splitModule = module.split('-');
+
+    console.log(splitModule);
+
+    const moduleNumber = Number(splitModule[0]);
+    const moduleName = splitModule?.[1] ?? `Módulo ${moduleNumber}`;
+
+    console.log('Nombre: ', moduleName);
+    
     if (accumulator[moduleNumber]) {
-      accumulator[moduleNumber].push(entry);
+      accumulator[moduleNumber].entries.push(entry);
     } else {
-      accumulator[moduleNumber] = [entry];
+      accumulator[moduleNumber] = { name: moduleName, entries: [entry] };
     }
     return accumulator;
   }, []);

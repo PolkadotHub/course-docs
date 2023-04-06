@@ -2,12 +2,14 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { CourseTracker } from "../../components/CourseTracker";
+import { Checklist } from "../../components/Checklist";
 import { Quiz } from "../../components/Quiz";
 import { groupEntriesByModule } from "../../utils/groupEntries";
 import { Track } from "../../data/tracks";
 
 export async function getStaticPaths() {
   const rustCourseEntries = await getCollection("rust");
+  console.log('Rust course entries: ', rustCourseEntries);
   return rustCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -24,13 +26,13 @@ const courseEntriesByModule = groupEntriesByModule(rustCourseEntries);
 
 const { entry } = Astro.props;
 
-const moduleEntries = courseEntriesByModule[entry.data.module];
+const moduleEntries = courseEntriesByModule[entry.data.module].entries;
 const entryIndex = moduleEntries.findIndex(
   (moduleEntry) => moduleEntry.id === entry.id
 );
 const nextEntry =
   entryIndex === moduleEntries.length - 1
-    ? courseEntriesByModule[entry.data.module + 1]?.[0]
+    ? courseEntriesByModule[entry.data.module + 1]?.entries[0]
     : moduleEntries[entryIndex + 1];
 
 const { Content } = await entry.render();
@@ -46,9 +48,16 @@ const { Content } = await entry.render();
     />
   </div>
   <div
-    class="md:px-10 lg:grid lg:grid-cols-[1fr,2fr,1fr] lg:grid-rows-1 lg:mt-10"
+    class="md:px-10 lg:grid lg:grid-cols-[20rem,2fr] lg:grid-rows-1 lg:mt-10"
   >
-    <div></div>
+    <div class="lg:block hidden">
+      <CourseTracker
+        client:load
+        module={entry.data.module}
+        courseEntriesByModule={courseEntriesByModule}
+        track={Track.Rust}
+      />
+    </div>
     <main class="px-4 space-y-4 mb-10">
       <Content />
       {
@@ -62,7 +71,14 @@ const { Content } = await entry.render();
         )
       }
       {
-        nextEntry && (
+        nextEntry && <>
+          <Checklist
+            client:load
+            items={entry.data.checklist}
+            module={entry.data.module}
+            entryNumber={entryIndex}
+            track={Track.Rust}
+          />
           <a
             class:list={[
               "inline-block w-full border rounded border-black p-5 bg-orange-light text-right",
@@ -86,17 +102,9 @@ const { Content } = await entry.render();
               />
             </svg>
           </a>
-        )
+        </>
       }
     </main>
-    <div class="lg:block hidden">
-      <CourseTracker
-        client:load
-        module={entry.data.module}
-        courseEntriesByModule={courseEntriesByModule}
-        track={Track.Rust}
-      />
-    </div>
   </div>
 </Layout>
 

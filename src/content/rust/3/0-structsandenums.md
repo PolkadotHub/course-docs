@@ -15,4 +15,4 @@ En cuanto a la manipulación de estructuras y enumerados en Rust, se pueden crea
 Además, Rust proporciona características de patrones de coincidencia (pattern matching) que se pueden utilizar para descomponer valores de estructuras y enumerados en sus componentes individuales y realizar acciones basadas en los valores específicos. Esto permite la escritura de código más expresivo y conciso al manipular estructuras y enumerados.
 
 Para más información y detalles:
-[![IMAGE_ALT](https://img.youtube.com/vi/y-fdPtzXXqA/0.jpg)](https://www.youtube.com/watch?v=y-fdPtzXXqA&list=PLnf2S4I9w85P-zimbgpCWJlTJZnY_4TmX&index=3)
+<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/y-fdPtzXXqA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

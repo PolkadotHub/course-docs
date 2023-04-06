@@ -18,4 +18,4 @@ En Rust, el manejo de errores se realiza mediante el tipo de datos Result<T, E>.
 Para manejar los errores, Rust utiliza el mecanismo de "propagación de errores". Esto significa que en lugar de manejar los errores en el lugar donde ocurren, los errores se propagan hacia arriba en la pila de llamadas hasta que se alcanza un punto donde se puede manejar el error. El manejo de errores se realiza mediante el uso de la expresión match o la palabra clave ?, que se utiliza para propagar los errores hacia arriba en la pila de llamadas.
 
 Para más información y detalles:
-[![IMAGE_ALT](https://img.youtube.com/vi/3nfjm5YKPMA/0.jpg)](https://www.youtube.com/watch?v=3nfjm5YKPMA&list=PLnf2S4I9w85P-zimbgpCWJlTJZnY_4TmX&index=4)
+<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/3nfjm5YKPMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

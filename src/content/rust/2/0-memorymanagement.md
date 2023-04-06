@@ -14,4 +14,4 @@ Rust ofrece un sistema de gestión de memoria innovador y seguro que reduce los 
 
 
 Para más información y detalles:
-[![IMAGE_ALT](https://img.youtube.com/vi/E-8STOszfbY/0.jpg)](https://www.youtube.com/watch?v=E-8STOszfbY&list=PLnf2S4I9w85P-zimbgpCWJlTJZnY_4TmX&index=2)
+<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/E-8STOszfbY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

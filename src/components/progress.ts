@@ -1,4 +1,4 @@
-import { createEffect, createRoot } from 'solid-js';
+import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { getCollection } from 'astro:content';
 import { groupEntriesByModule } from '../utils/groupEntries';
@@ -8,17 +8,20 @@ const getStartingValues = async (collection: Track) => {
   const courseEntries = await getCollection(collection);
   const entriesByModule = groupEntriesByModule(courseEntries);
   const startingChecklist = entriesByModule.map((module) =>
-    module.map((entry) =>
+    module.entries.map((entry) =>
       Object.fromEntries(
         (entry.data.checklist ?? ['default']).map((_, index) => [index, false])
       )
     )
   );
   const startingQuiz = entriesByModule.map((module) =>
-    module.map((entry) =>
+    module.entries.map((entry) =>
       Object.fromEntries((entry.data.quiz ?? []).map((_, index) => [index, 0]))
     )
   );
+
+  console.log('Starting checklist: ', startingChecklist);
+  console.log('Starting quiz: ', startingQuiz);
 
   return { checklist: startingChecklist, quiz: startingQuiz };
 }
