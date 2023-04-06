@@ -2,21 +2,26 @@ import { createEffect, createRoot } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { getCollection } from 'astro:content';
 import { groupEntriesByModule } from '../utils/groupEntries';
+import { Track } from '../data/tracks';
 
-const substrateCourseEntries = await getCollection('substrate');
-const entriesByModule = groupEntriesByModule(substrateCourseEntries);
-const startingChecklist = entriesByModule.map((module) =>
-  module.map((entry) =>
-    Object.fromEntries(
-      (entry.data.checklist ?? ['default']).map((_, index) => [index, false])
+const getStartingValues = async (collection: Track) => {
+  const courseEntries = await getCollection(collection);
+  const entriesByModule = groupEntriesByModule(courseEntries);
+  const startingChecklist = entriesByModule.map((module) =>
+    module.map((entry) =>
+      Object.fromEntries(
+        (entry.data.checklist ?? ['default']).map((_, index) => [index, false])
+      )
     )
-  )
-);
-const startingQuiz = entriesByModule.map((module) =>
-  module.map((entry) =>
-    Object.fromEntries((entry.data.quiz ?? []).map((_, index) => [index, 0]))
-  )
-);
+  );
+  const startingQuiz = entriesByModule.map((module) =>
+    module.map((entry) =>
+      Object.fromEntries((entry.data.quiz ?? []).map((_, index) => [index, 0]))
+    )
+  );
+
+  return { checklist: startingChecklist, quiz: startingQuiz };
+}
 
 type EntryCheckbox = { [k: number]: boolean };
 type ModuleCheckbox = EntryCheckbox[];
@@ -39,20 +44,11 @@ export interface Progress {
   };
 }
 
-const createProgress = () => {
+const createProgress = async () => {
   const [progress, setProgress] = createStore<Progress>({
-    substrate: {
-      checklist: startingChecklist,
-      quiz: startingQuiz,
-    },
-    ink: {
-      checklist: startingChecklist,
-      quiz: startingQuiz,
-    },
-    rust: {
-      checklist: startingChecklist,
-      quiz: startingQuiz,
-    },
+    substrate: await getStartingValues(Track.Substrate),
+    ink: await getStartingValues(Track.Ink),
+    rust: await getStartingValues(Track.Rust),
   });
 
   createEffect(() => {
@@ -65,4 +61,4 @@ const createProgress = () => {
   return { progress, setProgress };
 };
 
-export default createRoot(createProgress);
+export default await createProgress();
