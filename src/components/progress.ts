@@ -20,9 +20,6 @@ const getStartingValues = async (collection: Track) => {
     )
   );
 
-  console.log('Starting checklist: ', startingChecklist);
-  console.log('Starting quiz: ', startingQuiz);
-
   return { checklist: startingChecklist, quiz: startingQuiz };
 }
 

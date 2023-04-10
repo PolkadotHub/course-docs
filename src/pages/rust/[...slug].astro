@@ -9,7 +9,6 @@ import { Track } from "../../data/tracks";
 
 export async function getStaticPaths() {
   const rustCourseEntries = await getCollection("rust");
-  console.log('Rust course entries: ', rustCourseEntries);
   return rustCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },

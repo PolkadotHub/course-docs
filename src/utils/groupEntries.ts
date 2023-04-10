@@ -11,13 +11,9 @@ export const groupEntriesByModule = (
 
     const splitModule = module.split('-');
 
-    console.log(splitModule);
-
     const moduleNumber = Number(splitModule[0]);
     const moduleName = splitModule?.[1] ?? `Módulo ${moduleNumber}`;
 
-    console.log('Nombre: ', moduleName);
-    
     if (accumulator[moduleNumber]) {
       accumulator[moduleNumber].entries.push(entry);
     } else {

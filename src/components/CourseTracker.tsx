@@ -129,13 +129,14 @@ interface CheckmarkProps {
 
 const Checkmark: Component<CheckmarkProps> = (props) => (
   <div
-    classList={{
-      "h-5 w-5 mr-2 rounded-full flex flex-none items-center justify-center border border-black dark:border-white":
-        true,
-      "bg-green": props.checked && props.track === Track.Substrate,
-      "bg-orange": props.checked && props.track === Track.Rust,
-      "bg-white dark:bg-black": !props.checked,
-    }}
+    class={clsx(
+      "h-5 w-5 mr-2 rounded-full flex flex-none items-center justify-center border border-black dark:border-white",
+      {
+        "bg-green": props.track === Track.Substrate && props.checked,
+        "bg-orange": props.track === Track.Rust && props.checked,
+        "bg-white dark:bg-black": !props.checked
+      }
+    )}
   >
     {props.checked && (
       <div class="w-3 h-1.5 border-l border-b border-black dark:border-white -rotate-45 -translate-y-1/4" />
