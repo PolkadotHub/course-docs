@@ -4,7 +4,7 @@ export const navItems = [
     text: 'Home',
   },
   {
-    href: '/rust',
+    href: '/rust/0-presentación/0-presentation',
     text: 'Rust',
   },
   // {
