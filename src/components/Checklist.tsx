@@ -16,7 +16,7 @@ export const Checklist: Component<ChecklistProps> = (props) => {
     setProgress(props.track, 'checklist', props.module, props.entryNumber, checkboxIndex, (done) => !done);
     window.localStorage.setItem('progress', JSON.stringify(progress));
   };
-  
+
   return (
     <div classList={{
       "flex flex-col justify-center p-5 border border-black dark:border-white rounded my-5": true,

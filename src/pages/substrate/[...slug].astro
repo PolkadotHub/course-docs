@@ -25,13 +25,13 @@ const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
 
 const { entry } = Astro.props;
 
-const moduleEntries = courseEntriesByModule[entry.data.module];
+const moduleEntries = courseEntriesByModule[entry.data.module].entries;
 const entryIndex = moduleEntries.findIndex(
   (moduleEntry) => moduleEntry.id === entry.id
 );
 const nextEntry =
   entryIndex === moduleEntries.length - 1
-    ? courseEntriesByModule[entry.data.module + 1]?.[0]
+    ? courseEntriesByModule[entry.data.module + 1]?.entries[0]
     : moduleEntries[entryIndex + 1];
 
 const { Content } = await entry.render();
@@ -62,39 +62,38 @@ const { Content } = await entry.render();
           />
         )
       }
-      <Checklist
-        client:load
-        items={entry.data.checklist}
-        module={entry.data.module}
-        entryNumber={entryIndex}
-      />
-      {
-        nextEntry && (
-          <a
-            class:list={[
-              "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
-              "dark:border-white dark:bg-green-dark hover:underline",
-            ]}
-            href={`/${nextEntry.collection}/${nextEntry.slug}`}
+      {nextEntry && <>
+        <Checklist
+          client:load
+          items={entry.data.checklist}
+          module={entry.data.module}
+          entryNumber={entryIndex}
+          track={Track.Substrate}
+        />
+        <a
+          class:list={[
+            "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
+            "dark:border-white dark:bg-green-dark hover:underline",
+          ]}
+          href={`/${nextEntry.collection}/${nextEntry.slug}`}
+        >
+          Siguiente página
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 inline"
           >
-            Siguiente página
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6 inline"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </a>
-        )
-      }
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </a>
+      </>}
     </main>
     <div class="lg:block hidden">
       <CourseTracker
