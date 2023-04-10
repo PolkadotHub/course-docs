@@ -16,7 +16,8 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
   const { progress } = courseProgress;
 
   const toggleOpen = () => {
-    setIsOpen(!isOpen());
+    const open = isOpen();
+    setIsOpen(!open);
   };
 
   return (
