@@ -47,9 +47,16 @@ const { Content } = await entry.render();
     />
   </div>
   <div
-    class="md:px-10 lg:grid lg:grid-cols-[1fr,2fr,1fr] lg:grid-rows-1 lg:mt-10"
+    class="md:px-10 lg:grid lg:grid-cols-[20rem,2fr] lg:grid-rows-1 lg:mt-10"
   >
-    <div></div>
+    <div class="lg:block hidden">
+      <CourseTracker
+        client:load
+        module={entry.data.module}
+        courseEntriesByModule={courseEntriesByModule}
+        track={Track.Substrate}
+      />
+    </div>
     <main class="px-4 space-y-4 mb-10">
       <Content />
       {
@@ -62,47 +69,43 @@ const { Content } = await entry.render();
           />
         )
       }
-      {nextEntry && <>
-        <Checklist
-          client:load
-          items={entry.data.checklist}
-          module={entry.data.module}
-          entryNumber={entryIndex}
-          track={Track.Substrate}
-        />
-        <a
-          class:list={[
-            "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
-            "dark:border-white dark:bg-green-dark hover:underline",
-          ]}
-          href={`/${nextEntry.collection}/${nextEntry.slug}`}
-        >
-          Siguiente página
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 inline"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+      {
+        nextEntry && (
+          <>
+            <Checklist
+              client:load
+              items={entry.data.checklist}
+              module={entry.data.module}
+              entryNumber={entryIndex}
+              track={Track.Substrate}
             />
-          </svg>
-        </a>
-      </>}
+            <a
+              class:list={[
+                "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
+                "dark:border-white dark:bg-green-dark hover:underline",
+              ]}
+              href={`/${nextEntry.collection}/${nextEntry.slug}`}
+            >
+              Siguiente página
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 inline"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </a>
+          </>
+        )
+      }
     </main>
-    <div class="lg:block hidden">
-      <CourseTracker
-        client:load
-        module={entry.data.module}
-        courseEntriesByModule={courseEntriesByModule}
-        track={Track.Substrate}
-      />
-    </div>
   </div>
 </Layout>
 
