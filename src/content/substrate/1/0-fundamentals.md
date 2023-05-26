@@ -1,8 +1,14 @@
 ---
-title: Introducción
+title: Fundamentos de Blockchain
 module: 1
 ---
 
 # Módulo 1 - Fundamentos de Blockchain
 
-En este módulo exploraremos los fundamentos de las cadenas de bloques o blockchains. Esta tecnología nos permite crear sistemas de registro de información seguros y descentralizados. Es importante destacar que muchos de los conceptos presentados en este módulo se dan en un escenario ideal. Las blockchains pueden ser difíciles de manejar en ciertos casos debido a su naturaleza distribuida y descentralizada.
+Bienvenidos al primer módulo del curso de Substrate.
+
+En este módulo nos adentraremos en la tecnología blockchain, comenzando con una introducción a sus fundamentos. Exploraremos qué es una blockchain, cómo funciona y cómo se modifica. Además, abordaremos un problema clave en el mundo de las criptomonedas: el problema del doble gasto.
+
+El objetivo de este primer módulo es proporcionar una sólida base teórica que nos permita entender qué es una blockchain, cómo se estructura y cuáles son sus componentes esenciales. Al final de este módulo, tendrán una clara comprensión de estos conceptos fundamentales, lo que será crucial para los temas que abordaremos en los siguientes módulos.
+
+Sin más preámbulos, comencemos.

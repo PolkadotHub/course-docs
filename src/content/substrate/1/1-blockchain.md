@@ -1,35 +1,39 @@
 ---
-title: Blockchain
+title: Introducción
 module: 1
 ---
 
-# ¿Qué es una Blockchain?
+# Introducción a la Blockchain
 
-Para comenzar a hablar de blockchains, podemos pensar en ellas como una base de datos particular. Esta base de datos es del tipo distribuida y replicada, lo que significa que todos los participantes o "nodos" que quieran interactuar con la misma deben tener una copia de los datos almacenados localmente.
+Una **blockchain** puede ser entendida como una base de datos especializada, distinguida por ser distribuida y replicada. Esto significa que cada participante o **nodo** en la red debe mantener una copia local de todos los datos almacenados en ella.
 
-Cada nueva información que se quiera añadir debe tener la forma de un bloque, que está compuesto básicamente por:
+La información nueva que se añade a la blockchain debe estructurarse en forma de un **bloque**. Cada bloque se compone de:
 
-- Identificador del bloque
-- Datos (transacciones, etcétera)
-- Identificador del bloque padre
+- Un identificador único del bloque
+- Datos, que pueden ser transacciones, por ejemplo
+- El identificador del bloque previo o "**bloque padre**"
 
-Cada nuevo bloque añadido contará con un identificador del bloque padre, que idealmente debería ser el último bloque añadido. De esta forma, se obtiene una conjunto de bloques enlazados, o una cadena de bloques.
+Cada nuevo bloque se enlaza al bloque padre, creando una cadena de bloques conectados. De aquí surge el término **cadena de bloques** o **blockchain**.
 
-# Modificar la Blockchain
+# Interacción con la Blockchain
 
-Ya conociendo la estructura, podemos analizar los distintos escenarios de interacción con una cadena de bloques:
+Una vez comprendida la estructura básica de la blockchain, se pueden considerar los diferentes escenarios de interacción:
 
-- Inserción: se crea un bloque con la información a añadir y se enlaza con el bloque anterior.
-- Eliminación o modificación: la blockchain es **inmutable**, es decir, no es posible modificar ni eliminar bloques.
+- **Inserción**: se crea y añade un bloque con la información nueva, enlazándolo al bloque anterior.
+- **Eliminación o modificación**: una característica esencial de las blockchains es su **inmutabilidad**, lo que significa que no es posible eliminar ni modificar bloques una vez que se han añadido a la cadena.
 
-La inmutabilidad que presentan las blockchains las hace ideales para ser utilizadas en aplicaciones que requieran altas garantías en cuanto a la integridad de los datos y la inexistencia de fraudes.
+Esta inmutabilidad hace que las blockchains sean idóneas para aplicaciones que necesitan asegurar la integridad de los datos y prevenir fraudes.
 
-# Problema Del Doble Gasto
+# El Problema del Doble Gasto
 
-Uno de los principales problemas que las cadenas de bloques solucionan en aplicaciones financieras es el doble gasto (o double-spend). 
+Las blockchains han resuelto un desafío significativo en el contexto financiero conocido como el problema del doble gasto (o **double-spend**).
 
-El doble gasto se refiere a la posibilidad de gastar el mismo activo digital más de una vez. En el contexto de las transacciones financieras, esto podría suceder si una persona intenta enviar la misma cantidad de dinero a dos destinatarios diferentes.
+En transacciones digitales convencionales, dependemos de una tercera parte, como un banco, para validar las transacciones. Estas entidades aseguran que quien realiza la transacción posee los fondos requeridos y que no intenta gastar el mismo dinero dos veces. Sin embargo, en un sistema distribuido y descentralizado como la blockchain, no existe tal entidad centralizada.
 
-Como la base de datos es distribuida, todos los participantes tienen una copia de las transacciones realizadas en la red. Una de las transacciones será válida e insertada en un bloque exitosamente, mientras que la segunda será inválida y rechazada por todos los participantes de la red.
+El doble gasto se refiere a la capacidad de gastar el mismo activo digital más de una vez. En términos financieros, podría suceder si una persona intenta enviar la misma cantidad de dinero a dos receptores distintos al mismo tiempo.
 
-- Lectura recomendada: [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)
+Dado que la base de datos de la blockchain es distribuida, todos los nodos tienen una copia de todas las transacciones. En un intento de doble gasto, una transacción será considerada válida e incorporada a un bloque, mientras que la segunda será identificada como inválida y rechazada por los demás participantes de la red.
+
+- **Lectura recomendada**: [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)
+
+Este documento, escrito por Satoshi Nakamoto, ofrece una visión profunda de la solución propuesta para el problema del doble gasto y el nacimiento de Bitcoin, la primera implementación exitosa de una blockchain.
