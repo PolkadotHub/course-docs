@@ -58,7 +58,9 @@ const { Content } = await entry.render();
       />
     </div>
     <main class="px-4 space-y-4 mb-10">
-      <Content />
+      <div class="content">
+        <Content />
+      </div>
       {
         entry.data.quiz && (
           <Quiz
@@ -110,14 +112,38 @@ const { Content } = await entry.render();
 </Layout>
 
 <style is:global>
+  h1,h2 {
+    @apply text-black dark:text-white font-bold;
+  }
   h1 {
-    @apply text-black dark:text-white text-4xl sm:text-5xl font-bold mb-5;
+    @apply text-4xl sm:text-5xl;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl;
   }
   p,
   li {
     @apply text-lg;
   }
+  p {
+    @apply my-3;
+  }
   ul {
     @apply list-disc px-5;
+  }
+  .content h1 {
+    @apply mt-12 mb-6 first:mt-0;
+  }
+  .content h2 {
+    @apply mt-8 mb-4;
+  }
+  .content a {
+    @apply text-green hover:underline;
+  }
+  .content ul {
+    @apply my-5;
+  }
+  .content {
+    @apply mb-10;
   }
 </style>
