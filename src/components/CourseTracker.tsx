@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
-import type { ModuleWithEntries } from "../types/courseEntries";
+import type { ModuleWithEntries, CourseEntries } from "../types/courseEntries";
 import { Track } from "../data/tracks";
 import courseProgress from "./progress";
+import type { ModuleCheckbox } from "./progress";
 
 export interface CourseTrackerProps {
   courseEntriesByModule: ModuleWithEntries;
@@ -18,6 +19,10 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
   const toggleOpen = () => {
     const open = isOpen();
     setIsOpen(!open);
+  };
+
+  const handleClick = (index: number) => {
+    setActiveTab(index);
   };
 
   return (
@@ -55,46 +60,62 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
                     "dark:bg-orange-dark bg-orange-light":
                       activeTab() === index && props.track === Track.Rust,
                   }}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => handleClick(index)}
                 >
                   {index}
                 </button>
               </li>
             ))}
           </ul>
-          <ul
-            class={clsx(
-              "list-none p-2 rounded-b flex flex-grow flex-col",
-              props.track === Track.Substrate &&
-                "dark:bg-green-dark bg-green-light",
-              props.track === Track.Rust &&
-                "dark:bg-orange-dark bg-orange-light"
-            )}
-          >
-            <h2 class="text-black dark:text-white text-2xl font-medium mb-2">{props.courseEntriesByModule[activeTab()].name}</h2>
-            {props.courseEntriesByModule[activeTab()].entries.map((entry, index) => {
-              const checklist =
-                progress[entry.collection].checklist[activeTab()][index];
-              const isChecked = Object.values(checklist).every(
-                (check) => check
-              );
-
-              return (
-                <li>
-                  <a
-                    href={`/${entry.collection}/${entry.slug}`}
-                    class="inline-block w-full hover:underline flex items-center"
-                  >
-                    <Checkmark checked={isChecked} track={props.track} />{" "}
-                    {index}. {entry.data.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <Tab
+            track={props.track}
+            module={props.courseEntriesByModule[activeTab()]}
+            entriesChecklist={progress[props.track].checklist[activeTab()]}
+          />
         </div>
       </div>
     </div>
+  );
+};
+
+interface TabProps {
+  track: Track;
+  module: { name: string, entries: CourseEntries };
+  entriesChecklist: ModuleCheckbox;
+}
+
+const Tab: Component<TabProps> = (props) => {
+  return (
+    <ul
+      class={clsx(
+        "list-none p-2 rounded-b flex flex-grow flex-col",
+        props.track === Track.Substrate &&
+          "dark:bg-green-dark bg-green-light",
+        props.track === Track.Rust &&
+          "dark:bg-orange-dark bg-orange-light"
+      )}
+    >
+      <h2 class="text-black dark:text-white text-2xl font-medium mb-2">{props.module.name}</h2>
+      {props.module.entries.map((entry, index) => {
+        const checklist =
+          props.entriesChecklist[index];
+        const isChecked = Object.values(checklist).every(
+          (check) => check
+        );
+
+        return (
+          <li class="list-disc ml-5">
+            <a
+              href={`/${entry.collection}/${entry.slug}`}
+              class="inline-block w-full hover:underline flex items-center"
+            >
+              {/*<Checkmark checked={isChecked} track={props.track} />*/}
+              {index}. {entry.data.title}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

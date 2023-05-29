@@ -1,6 +1,7 @@
 ---
 title: Algoritmos de Consenso
 module: 1
+draft: false
 ---
 
 # Algoritmos de Consenso

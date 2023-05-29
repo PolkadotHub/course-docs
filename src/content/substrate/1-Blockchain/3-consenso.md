@@ -1,6 +1,7 @@
 ---
 title: Consenso
 module: 1
+draft: false
 ---
 
 # Blockchain: Un Sistema Distribuido

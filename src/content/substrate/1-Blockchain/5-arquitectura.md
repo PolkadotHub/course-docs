@@ -1,6 +1,7 @@
 ---
 title: Arquitectura
 module: 1
+draft: false
 ---
 
 # Arquitectura

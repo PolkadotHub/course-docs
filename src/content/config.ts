@@ -14,6 +14,7 @@ const substrateCollection = defineCollection({
     module: z.number(),
     checklist: checklistSchema.optional(),
     quiz: z.array(questionSchema).optional(),
+    draft: z.boolean().default(true),
   }),
 });
 

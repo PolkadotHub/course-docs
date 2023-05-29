@@ -1,6 +1,7 @@
 ---
-title: Introducción
+title: Introducción a la Blockchain
 module: 1
+draft: false
 ---
 
 # Introducción a la Blockchain

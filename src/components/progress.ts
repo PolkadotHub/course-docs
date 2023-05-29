@@ -24,7 +24,7 @@ const getStartingValues = async (collection: Track) => {
 }
 
 type EntryCheckbox = { [k: number]: boolean };
-type ModuleCheckbox = EntryCheckbox[];
+export type ModuleCheckbox = EntryCheckbox[];
 
 type EntryRadio = { [k: number]: number };
 type ModuleRadio = EntryRadio[];
