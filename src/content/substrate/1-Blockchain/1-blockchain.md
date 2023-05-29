@@ -18,7 +18,7 @@ Cada nuevo bloque se enlaza al bloque padre, creando una cadena de bloques conec
 
 # Interacción con la Blockchain
 
-Una vez comprendida la estructura básica de la blockchain, se pueden considerar los diferentes escenarios de interacción:
+Una vez comprendida la estructura básica de la blockchain como base de datos, se pueden considerar los diferentes escenarios de interacción:
 
 - **Inserción**: se crea y añade un bloque con la información nueva, enlazándolo al bloque anterior.
 - **Eliminación o modificación**: una característica esencial de las blockchains es su **inmutabilidad**, lo que significa que no es posible eliminar ni modificar bloques una vez que se han añadido a la cadena.
@@ -27,14 +27,16 @@ Esta inmutabilidad hace que las blockchains sean idóneas para aplicaciones que 
 
 # El Problema del Doble Gasto
 
-Las blockchains han resuelto un desafío significativo en el contexto financiero conocido como el problema del doble gasto (o **double-spend**).
+Las blockchains han superado un obstáculo importante en el ámbito financiero, el problema del doble gasto (o **double-spend**).
 
-En transacciones digitales convencionales, dependemos de una tercera parte, como un banco, para validar las transacciones. Estas entidades aseguran que quien realiza la transacción posee los fondos requeridos y que no intenta gastar el mismo dinero dos veces. Sin embargo, en un sistema distribuido y descentralizado como la blockchain, no existe tal entidad centralizada.
+El doble gasto se refiere a la posibilidad de emplear el mismo activo digital en más de una transacción. Desde una perspectiva financiera, este problema podría surgir si un individuo intenta transferir la misma cantidad de dinero a dos receptores distintos al mismo tiempo.
 
-El doble gasto se refiere a la capacidad de gastar el mismo activo digital más de una vez. En términos financieros, podría suceder si una persona intenta enviar la misma cantidad de dinero a dos receptores distintos al mismo tiempo.
+En las transacciones digitales tradicionales, dependemos de un intermediario, como un banco, para autenticar las transacciones. Estas entidades se encargan de asegurar que el emisor de la transacción posee los fondos suficientes y no está tratando de utilizar el mismo dinero más de una vez.
 
-Dado que la base de datos de la blockchain es distribuida, todos los nodos tienen una copia de todas las transacciones. En un intento de doble gasto, una transacción será considerada válida e incorporada a un bloque, mientras que la segunda será identificada como inválida y rechazada por los demás participantes de la red.
+En un sistema descentralizado y distribuido como la blockchain, no existe tal entidad centralizada. Y si tal entidad existiera, estaríamos depositando nuestra confianza en ella. Por consiguiente, se vuelve imprescindible encontrar una forma de validar las transacciones sin la necesidad de un tercero.
+
+Las transacciones en la blockchain son validadas mediante el uso de técnicas de criptografía, y gracias a que la base de datos de la blockchain es distribuida, todos los nodos mantienen una copia de todas las transacciones. En una situación de doble gasto, una transacción será considerada legítima e incorporada a un bloque, mientras que la segunda será identificada como ilegítima y rechazada por el resto de los participantes en la red.
 
 - **Lectura recomendada**: [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)
 
-Este documento, escrito por Satoshi Nakamoto, ofrece una visión profunda de la solución propuesta para el problema del doble gasto y el nacimiento de Bitcoin, la primera implementación exitosa de una blockchain.
+Este trabajo académico, además de ser un hito en la historia de la blockchain, proporciona un entendimiento profundo de la solución propuesta al problema del doble gasto y del origen de Bitcoin, la primera implementación exitosa de una blockchain.

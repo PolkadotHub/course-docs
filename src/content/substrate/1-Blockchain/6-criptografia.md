@@ -6,17 +6,21 @@ draft: false
 
 # Criptografía
 
-La seguridad es un componente crítico en las blockchains, y la criptografía es la que respalda esta seguridad. Mediante el uso de varias técnicas criptográficas, las blockchains aseguran la integridad y autenticidad de las transacciones y datos. En esta sección, exploraremos tres aspectos clave: el hashing criptográfico, la criptografía de clave pública y las firmas digitales.
+Mediante el uso de varias técnicas criptográficas, las blockchains aseguran la integridad y autenticidad de las transacciones y datos. En esta sección, exploraremos tres aspectos clave: el hashing criptográfico, la criptografía de clave pública y las firmas digitales.
 
 # Hashing Criptográfico
 
-El **hashing** es el proceso de convertir cualquier tipo de datos en una cadena de caracteres de longitud fija, conocida como un **hash**. Las funciones hash transforman la entrada de manera que es prácticamente imposible derivar la entrada original a partir del hash de salida. Además, cualquier cambio, por mínimo que sea, en la entrada provoca un cambio significativo en el hash de salida, un fenómeno conocido como **efecto avalancha**.
+El **hashing** es una técnica que permite transformar cualquier clase de datos en una secuencia fija de caracteres, conocida como un **hash**. Las funciones hash convierten los datos de entrada de tal forma que resulta prácticamente inviable obtener los datos originales a partir del hash resultante. Además, cualquier variación, por mínima que sea, en los datos de entrada provoca un cambio drástico en el hash resultante, fenómeno conocido como **efecto avalancha**.
 
-En el contexto de blockchain, los árboles de Merkle son un ejemplo de cómo se utiliza el hashing. Cada bloque en la cadena de bloques incluye un hash que enlaza con el bloque anterior, creando así una conexión inmutable entre los bloques. Algunos ejemplos de funciones hash utilizadas en blockchain incluyen SHA-256 (Bitcoin), Keccak256 (Ethereum) y Blake2 (Polkadot y ZCash).
+Los árboles de Merkle (o **Merkle Trees**) son una aplicación práctica del hashing. Se trata de una estructura de datos que vincula información mediante hashes, y es donde se almacenan los datos. Estos árboles son esenciales para comprobar la integridad de los datos almacenados en la blockchain, ya que cualquier modificación en el estado desencadena un cambio en el hash de la **raíz** del árbol de Merkle.
+
+Este concepto también se aplica a los identificadores de los bloques. El identificador de un bloque es el hash de su cabecera, que incluye detalles como el hash del bloque anterior y la raíz del árbol de Merkle. Esto implica que cualquier modificación en el contenido del bloque resultará en un cambio en su identificador, lo que constituye un mecanismo efectivo para comprobar su integridad.
+
+Algunos ejemplos de funciones hash empleadas en blockchain incluyen SHA-256 (Bitcoin), Keccak256 (Ethereum) y Blake2 (Polkadot y ZCash).
 
 # Criptografía de Clave Pública
 
-La criptografía de clave pública, también conocida como **criptografía asimétrica**, utiliza un par de claves: una pública y una privada. En el mundo de las blockchains, cada usuario posee un par de estas claves. La clave pública sirve como identificador del usuario en la blockchain, mientras que la clave privada se utiliza para firmar transacciones y proporcionar una prueba de autenticidad.
+La criptografía de clave pública, también conocida como criptografía asimétrica, utiliza un par de claves: una **pública** y una **privada**. En el mundo de las blockchains, cada usuario posee un par de estas claves. La clave pública sirve como identificador del usuario en la blockchain, mientras que la clave privada se utiliza para firmar transacciones y proporcionar una prueba de autenticidad.
 
 # Firmas Digitales
 
