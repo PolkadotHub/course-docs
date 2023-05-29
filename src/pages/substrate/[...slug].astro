@@ -6,7 +6,9 @@ import { groupEntriesByModule } from "../../utils/groupEntries";
 import { Track } from "../../data/tracks";
 
 export async function getStaticPaths() {
-  const substrateCourseEntries = await getCollection("substrate");
+  const substrateCourseEntries = await getCollection("substrate", ({ data }) => {
+    return !data.draft;
+  });
   const entries = substrateCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -20,7 +22,7 @@ const styles = {
 };
 
 const substrateCourseEntries = await getCollection(Track.Substrate, ({ data }) => {
-  return data.draft !== true;
+  return !data.draft;
 });
 const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
 
