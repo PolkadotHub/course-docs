@@ -5,13 +5,13 @@ module: 1
 
 # Blockchain: Un Sistema Distribuido
 
-Un **sistema distribuido** se compone de una red de computadoras que colaboran para lograr un objetivo común. En el contexto de una **blockchain**, esta funciona sobre una red **descentralizada** en la que cada **nodo** conserva una copia del blockchain y comparte información con los otros nodos.
+Un **sistema distribuido** se compone de una red de computadoras que colaboran para lograr un objetivo común. En el contexto de una **blockchain**, esta funciona sobre una red **descentralizada** en la que cada **nodo** conserva una copia del estado de la red y comparte esta información con los otros nodos.
 
 La **descentralización**, una de las ventajas fundamentales de esta arquitectura, implica que en lugar de una autoridad central única, todos los nodos tienen igual influencia y colaboran para tomar decisiones y validar transacciones. Esto elimina la necesidad de un tercero de confianza para llevar a cabo estas tareas.
 
 Sin embargo, un reto significativo es alcanzar el **consenso** en una red que carece de jerarquías y no requiere permisos para operar.
 
-## Consenso en la Blockchain
+# Consenso en la Blockchain
 
 En un sistema distribuido, el consenso se refiere al acuerdo entre los diferentes participantes sobre cuál información es considerada **verídica**. En una blockchain, que es un tipo de sistema distribuido abierto y sin autoridades centrales, conseguir el consenso es un desafío considerable.
 
@@ -19,7 +19,7 @@ El **problema de los Generales Bizantinos** ilustra la dificultad de lograr cons
 
 La teoría de juegos ofrece un marco para comprender situaciones sociales en las que interactúan actores con metas contrapuestas. En un entorno estratégico, describe situaciones sociales entre participantes competitivos y ayuda a determinar las decisiones óptimas de agentes autónomos y competitivos.
 
-## El Problema de los Generales Bizantinos
+# El Problema de los Generales Bizantinos
 
 El problema de los Generales Bizantinos se plantea en el escenario de un asedio a la ciudad de Bizancio por varios generales. Han rodeado la ciudad, pero aún no han decidido cuándo iniciar su ataque conjunto. Solo alcanzarán la victoria si todos los generales atacan simultáneamente, pero fracasarán si atacan en momentos distintos.
 

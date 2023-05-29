@@ -7,17 +7,17 @@ module: 1
 
 La seguridad es un componente crítico en las blockchains, y la criptografía es la que respalda esta seguridad. Mediante el uso de varias técnicas criptográficas, las blockchains aseguran la integridad y autenticidad de las transacciones y datos. En esta sección, exploraremos tres aspectos clave: el hashing criptográfico, la criptografía de clave pública y las firmas digitales.
 
-## Hashing Criptográfico
+# Hashing Criptográfico
 
 El **hashing** es el proceso de convertir cualquier tipo de datos en una cadena de caracteres de longitud fija, conocida como un **hash**. Las funciones hash transforman la entrada de manera que es prácticamente imposible derivar la entrada original a partir del hash de salida. Además, cualquier cambio, por mínimo que sea, en la entrada provoca un cambio significativo en el hash de salida, un fenómeno conocido como **efecto avalancha**.
 
 En el contexto de blockchain, los árboles de Merkle son un ejemplo de cómo se utiliza el hashing. Cada bloque en la cadena de bloques incluye un hash que enlaza con el bloque anterior, creando así una conexión inmutable entre los bloques. Algunos ejemplos de funciones hash utilizadas en blockchain incluyen SHA-256 (Bitcoin), Keccak256 (Ethereum) y Blake2 (Polkadot y ZCash).
 
-## Criptografía de Clave Pública
+# Criptografía de Clave Pública
 
 La criptografía de clave pública, también conocida como **criptografía asimétrica**, utiliza un par de claves: una pública y una privada. En el mundo de las blockchains, cada usuario posee un par de estas claves. La clave pública sirve como identificador del usuario en la blockchain, mientras que la clave privada se utiliza para firmar transacciones y proporcionar una prueba de autenticidad.
 
-## Firmas Digitales
+# Firmas Digitales
 
 Las **firmas digitales** son una aplicación esencial de la criptografía de clave pública en las blockchains. Al realizar una transacción, el usuario firma la transacción con su clave privada, generando una firma digital que se añade a la transacción. Los demás nodos de la red pueden utilizar la clave pública del remitente para verificar que la firma digital se creó con la clave privada correspondiente, proporcionando así una prueba de que la transacción fue realmente enviada por el propietario de esa clave privada.
 
@@ -42,4 +42,4 @@ Aquí, (x,y) corresponde a un punto en la curva. El **punto base** de la curva, 
 
 La clave pública se deriva a partir de la multiplicación escalar de la clave privada (generada aleatoriamente) por el punto base de la curva.
 
-- Para aquellos interesados en los detalles matemáticos de este proceso, recomendamos el siguiente video de Computerphile: [Elliptic Curves](https://www.youtube.com/watch?v=NF1pwjL9-DE)
+- Para aquellos interesados en los detalles matemáticos de este proceso, recomendamos el siguiente video de Computerphile: **[Elliptic Curves](https://www.youtube.com/watch?v=NF1pwjL9-DE)**

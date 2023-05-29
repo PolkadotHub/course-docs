@@ -7,7 +7,7 @@ module: 0
 
 Te damos la bienvenida a este curso de **Substrate** en español. En esta introducción, detallaremos los temas y objetivos que se cubrirán durante el desarrollo del curso.
 
-## Objetivos de Aprendizaje
+# Objetivos de Aprendizaje
 
 1. **Fundamentos de la Blockchain:** Proporcionaremos una introducción a las **cadenas de bloques**, sus características y funcionalidades esenciales.
 
@@ -21,7 +21,7 @@ Te damos la bienvenida a este curso de **Substrate** en español. En esta introd
 
 Cada módulo está diseñado para tener una semana dedicada a su contenido, complementada con una clase sobre el material presentado en este sitio. Ten en cuenta que las primeras dos semanas incluirán un examen sobre el contenido cubierto.
 
-## Recomendaciones para el Curso
+# Recomendaciones para el Curso
 
 Para seguir este curso con éxito, es recomendable:
 
