@@ -1,6 +1,7 @@
 ---
 title: Máquinas de Estado
 module: 1
+draft: false
 ---
 
 # Blockchain como Máquinas de Estado

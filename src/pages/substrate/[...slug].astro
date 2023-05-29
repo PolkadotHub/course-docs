@@ -2,17 +2,16 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { CourseTracker } from "../../components/CourseTracker";
-import { Checklist } from "../../components/Checklist";
-import { Quiz } from "../../components/Quiz";
 import { groupEntriesByModule } from "../../utils/groupEntries";
 import { Track } from "../../data/tracks";
 
 export async function getStaticPaths() {
   const substrateCourseEntries = await getCollection("substrate");
-  return substrateCourseEntries.map((entry) => ({
+  const entries = substrateCourseEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
+  return entries;
 }
 
 const styles = {
@@ -20,7 +19,9 @@ const styles = {
   nav: "flex bg-green justify-between h-12 items-center",
 };
 
-const substrateCourseEntries = await getCollection(Track.Substrate);
+const substrateCourseEntries = await getCollection(Track.Substrate, ({ data }) => {
+  return data.draft !== true;
+});
 const courseEntriesByModule = groupEntriesByModule(substrateCourseEntries);
 
 const { entry } = Astro.props;
@@ -58,27 +59,12 @@ const { Content } = await entry.render();
       />
     </div>
     <main class="px-4 space-y-4 mb-10">
-      <Content />
-      {
-        entry.data.quiz && (
-          <Quiz
-            client:load
-            questions={entry.data.quiz}
-            module={entry.data.module}
-            entryNumber={entryIndex}
-          />
-        )
-      }
+      <div class="content">
+        <Content />
+      </div>
       {
         nextEntry && (
           <>
-            <Checklist
-              client:load
-              items={entry.data.checklist}
-              module={entry.data.module}
-              entryNumber={entryIndex}
-              track={Track.Substrate}
-            />
             <a
               class:list={[
                 "inline-block w-full border rounded border-black p-5 bg-green-light text-right",
@@ -110,14 +96,46 @@ const { Content } = await entry.render();
 </Layout>
 
 <style is:global>
+  h1,h2 {
+    @apply text-black dark:text-white font-bold;
+  }
   h1 {
-    @apply text-black dark:text-white text-4xl sm:text-5xl font-bold mb-5;
+    @apply text-4xl sm:text-5xl;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl;
   }
   p,
   li {
     @apply text-lg;
   }
+  p {
+    @apply my-3;
+  }
   ul {
     @apply list-disc px-5;
+  }
+  .content ol {
+    list-style: decimal;
+    @apply px-5;
+  }
+  .content h1 {
+    @apply mt-12 mb-6 first:mt-0;
+  }
+  .content h2 {
+    @apply mt-8 mb-4;
+  }
+  .content a {
+    @apply text-green hover:underline;
+  }
+  .content ul {
+    @apply my-5;
+  }
+  .content {
+    @apply mb-10;
+    word-break: break-word;
+  }
+  .content pre {
+    @apply p-5;
   }
 </style>
