@@ -3,36 +3,14 @@ title: Traits
 module: 2
 ---
 
-# Traits Avanzados
+# 4. Traits avanzados
 
-En este módulo, vamos a profundizar en el sistema de **traits** de Rust. Los traits son una forma de definir comportamientos que pueden ser compartidos por diferentes tipos.
+En este módulo, vamos a profundizar en el sistema de **traits** de Rust.
+Como vimos, los traits son una forma de definir comportamientos que pueden ser compartidos por diferentes tipos.
 
-## Profundizando en Traits
+## Límites de Traits y Cláusulas Where
 
-- **Definición e Implementación de Traits:** Los traits pueden ser vistos como interfaces que definen un conjunto de métodos que describen cierto comportamiento. Para definir un trait, usamos la palabra clave `trait`, seguida del nombre del trait y un bloque de código que contiene los métodos.
-
-```rust
-trait Animal {
-    fn hacer_sonido(&self);
-}
-
-struct Perro;
-struct Gato;
-
-impl Animal for Perro {
-    fn hacer_sonido(&self) {
-        println!("¡Guau!");
-    }
-}
-
-impl Animal for Gato {
-    fn hacer_sonido(&self) {
-        println!("¡Miau!");
-    }
-}
-```
-
-- **Límites de Traits y Cláusulas Where:** Los límites de traits y las cláusulas `where` se utilizan para definir restricciones en los tipos que se pueden usar con ciertas funciones o implementaciones de traits.
+Los límites de traits y las cláusulas `where` se utilizan para definir restricciones en los tipos que se pueden usar con ciertas funciones o implementaciones de traits.
 
 ```rust
 trait Printable {

@@ -3,11 +3,14 @@ title: Generics
 module: 2
 ---
 
-# Generics
+# 3. Generics
 
-Los **Generics**, o tipos genéricos, son una herramienta esencial de Rust que permite la creación de funciones y tipos que pueden adaptarse a varios tipos de datos. Esta característica impulsa la reutilización del código y reduce la redundancia.
+Los **generics**, o tipos genéricos, son una herramienta de Rust que permite la creación de funciones y tipos que pueden adaptarse a varios tipos de datos.
+Permiten la reutilización del código y reducen la redundancia.
 
-Por ejemplo, imagina que necesitamos una función que compare dos elementos de un tipo específico y devuelva el más grande. Sin generics, tendríamos que escribir funciones separadas para cada tipo posible (i32, f64, etc.). Pero con generics, podemos escribir una sola función que trabaje con varios tipos.
+Por ejemplo, imaginen que necesitamos una función que compare dos elementos de un tipo específico y devuelva el más grande.
+Sin generics, tendríamos que escribir funciones separadas para cada tipo posible (i32, f64, etc.).
+Con generics, podemos escribir una sola función que trabaje con varios tipos.
 
 ```rust
 fn max<T: Ord>(x: T, y: T) -> T {
@@ -18,11 +21,17 @@ let num_max = max(6, 9); // para i32
 let char_max = max('a', 'z'); // para char
 ```
 
+La sintaxis `T: Ord` se usa para restringir los posibles tipos que va a tomar el generico `T` a solo aquellos que implementen el trait `Ord`.
+
 ## Tipos de Datos Genéricos
 
-Los **tipos de datos genéricos** permiten desarrollar definiciones que trabajen con un rango variado de tipos. Al escribir código, podemos especificar que ciertas partes serán genéricas, es decir, que pueden aceptar varios tipos de datos.
+Los **tipos de datos genéricos** permiten desarrollar definiciones que trabajen con varios posibles tipos.
+Al escribir código, podemos especificar que ciertos tipos serán genéricos, es decir, que pueden tomar varios posibles tipos **concretos**.
+Los tipos genericos se suelen llamar con solo una letra mayúscula, como `T`, `U`, o `V`, pero pueden tomar cualquier nombre.
+Es buena idea usar nombres lo más descriptivos posibles en el caso de que no sea obvio el uso del generico.
 
-Un uso común de los tipos de datos genéricos es en las estructuras de datos. Por ejemplo, podríamos querer una estructura `Point` que pueda contener coordenadas de diferentes tipos (enteros, flotantes, etc.).
+Un uso común de los tipos de datos genéricos es en las estructuras de datos.
+Por ejemplo, podríamos querer una estructura `Point` que pueda contener coordenadas de diferentes tipos (enteros, flotantes, etc.).
 
 ```rust
 struct Point<T> {
@@ -50,6 +59,8 @@ fn reverse<T>(arr: &[T]) -> Vec<T> where T: Clone {
 let arr = [1, 2, 3, 4, 5];
 let rev = reverse(&arr);
 ```
+
+La clausula `where` es otra manera de restringir genericos a tipos concretos que implementen un trait particular.
 
 ## Estructuras Genéricas
 

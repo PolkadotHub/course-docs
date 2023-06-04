@@ -3,13 +3,22 @@ title: Fundamentos
 module: 2
 ---
 
-# Fundamentos de Rust
+# 2. Fundamentos de Rust
 
-Este módulo tiene como objetivo reforzar conceptos clave de Rust que serán de vital importancia al trabajar con Substrate. Aunque se proporciona una revisión rápida, cada tema debe ser comprendido a fondo.
+Este módulo tiene como objetivo reforzar conceptos clave de Rust que serán de vital importancia al trabajar con Substrate.
+Aunque se proporciona una revisión rápida, cada tema debe ser comprendido a fondo.
+Los invitamos nuevamente a estudiar de las referencias recomendadas.
+- [Curso de Rust](https://polkadothub.io/rust/0-presentaci%C3%B3n/0-presentation)
+- [Libro oficial de Rust](https://doc.rust-lang.org/book/)
+- [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
+- [Rustlings](https://github.com/rust-lang/rustlings)
+- [Rust Cheat Sheet](https://cheats.rs/)
 
 ## Rust Básico
 
-**Tipos de Datos:** Rust incluye varios tipos de datos primitivos y compuestos, como enteros (`i32`, `u32`), punto flotante (`f32`, `f64`), booleanos (`bool`), caracteres (`char`), tuplas y arrays. Recuerda que Rust es fuertemente tipado, y cada variable tiene un tipo específico.
+**Tipos de Datos:** Rust incluye varios tipos de datos primitivos y compuestos, como enteros (`i32`, `u32`), numeros con punto flotante (`f32`, `f64`), booleanos (`bool`), caracteres (`char`), tuplas y arrays.
+Recuerden que Rust es fuertemente tipado, y cada variable tiene un tipo específico.
+El número en estos tipos especifica la cantidad de bits que ocupan, más bits permiten rangos más amplios, en el caso de los enteros, o mayor precisión, en el caso de los numeros con punto flotante.
 
 ```rust
 let entero: i32 = 10;
@@ -43,7 +52,7 @@ for numero in [1, 2, 3, 4, 5].iter() {
 }
 ```
 
-**Funciones:** Las funciones en Rust aceptan parámetros y pueden devolver valores. Las funciones son definidas con la palabra clave `fn`, seguida por el nombre de la función, los parámetros entre paréntesis, un tipo de retorno, y un bloque de código.
+**Funciones:** Las funciones en Rust aceptan parámetros y pueden devolver valores. Las funciones son definidas con la palabra reservada `fn`, seguida por el nombre de la función, los parámetros entre paréntesis, un tipo de retorno, y un bloque de código.
 
 ```rust
 fn suma(a: i32, b: i32) -> i32 {
@@ -66,7 +75,8 @@ let p = Punto { x: 0, y: 7 };
 println!("Punto se encuentra en ({}, {})", p.x, p.y);
 ```
 
-**Enums:** Los `enums` en Rust te permiten definir un tipo que puede ser uno de varios posibles variantes. Esto es especialmente útil en la manipulación de errores, donde un valor puede representar un resultado exitoso o un tipo específico de error.
+**Enums:** Los `enums` en Rust permiten definir un tipo que puede ser una de varias posibles variantes.
+Esto es útil en muchos casos, un ejemplo siendo en la manipulación de errores, donde un valor puede representar un resultado exitoso o un tipo específico de error.
 
 ```rust
 enum Resultado {
@@ -82,9 +92,44 @@ match resultado {
 }
 ```
 
-**Módulos:** Los `módulos` en Rust ayudan a organizar y reutilizar código, dividiendo el código en bloques lógicos y control
+**Traits:** Los `traits` son similares a las interfaces en lenguajes orientados a objetos.
+Permiten especificar ciertos comportamientos que pueden ser implementados por distintos tipos, posiblemente de manera distinta.
+Pueden tener implementaciones por defecto, que no son necesarias de implementar pero se pueden sobreescribir.
 
-ando la visibilidad de los elementos del código.
+```rust
+trait HaceSonido {
+    fn sonido() -> &'static str;
+    fn hacer_sonido() {
+        println!(Self::sonido());
+    }
+}
+
+struct Pato;
+impl HaceSonido for Pato {
+    fn sonido() -> &'static str {
+        "Quack"
+    }
+    // No es necesario implementar `hacer_sonido` porque tiene una implementación por defecto
+}
+
+struct Perro;
+impl HaceSonido for Perro {
+    fn sonido() -> &'static str {
+        "Guau!"
+    }
+    // Sobreescribimos `hacer_sonido` para hacer más ruido
+    fn hacer_sonido() {
+        println!(Self::sonido());
+        println!(Self::sonido());
+        println!(Self::sonido());
+    }
+}
+
+Pato::hacer_sonido(); // "Quack"
+Perro::hacer_sonido(); // "Guau!" "Guau!" "Guau!"
+```
+
+**Módulos:** Los `módulos` en Rust ayudan a organizar y reutilizar código, dividiendo el código en bloques lógicos y controlando la visibilidad de los elementos del código.
 
 ```rust
 mod saludo {
@@ -107,14 +152,19 @@ let x = 5;  // x se almacena en el stack
 let y = Box::new(5); // y se almacena en el heap
 ```
 
-**Ownership (Propiedad):** El sistema de ownership de Rust controla cuándo y cómo se liberan los recursos de memoria. Recuerda la regla principal de ownership: "Cada valor en Rust tiene una variable propietaria."
+**Ownership (Propiedad):** El sistema de ownership de Rust controla cuándo y cómo se liberan los recursos de memoria.
+Las reglas de ownership son:
+- Cada valor en Rust tiene un propietario
+- Solo puede haber un propietario en un momento dado
+- Cuando el propietario se va de alcance, el valor es liberado
 
 ```rust
 let s1 = String::from("hola");  // s1 es el propietario del recurso
 let s2 = s1;  // s2 ahora es el propietario del recurso, s1 ya no es válido
 ```
 
-**Borrowing y Lifetimes:** El `borrowing` permite acceder a los datos sin tomar ownership, lo que ayuda a compartir y utilizar los datos de forma segura. Los `lifetimes` en Rust aseguran que las referencias sean siempre válidas, evitando problemas como las referencias colgantes.
+**Borrowing y Lifetimes:** El `borrowing` permite acceder a los datos sin tomar ownership, lo que ayuda a compartir y utilizar los datos de forma segura.
+Los `lifetimes` en Rust aseguran que las referencias sean siempre válidas, evitando problemas como las referencias colgantes.
 
 ```rust
 fn main() {
@@ -128,22 +178,14 @@ fn calcular_longitud(s: &String) -> usize {
 }
 ```
 
-**Movimientos vs Copias:** En Rust, algunos tipos tienen una semántica de copia, mientras que otros tienen una semántica de movimiento. Cuando un valor se mueve, su ownership se transfiere y ya no se puede utilizar desde el lugar original. Cuando un valor se copia, se crea una duplicación independiente del valor original, y ambos pueden usarse de forma independiente.
+**Movimientos vs Copias:** En Rust, algunos tipos tienen una semántica de copia, mientras que otros tienen una semántica de movimiento.
+Cuando un valor se mueve, su ownership se transfiere y ya no se puede utilizar desde el lugar original.
+Cuando un valor se copia, se crea un duplicado independiente del valor original, y ambos pueden usarse de forma independiente.
 
 ```rust
-let x = 5; // x implementa la trait Copy
-let y = x; // y es una copia de x, x aún es válido
+let x = 5; // x implementa el trait Copy
+let y = x; // y es una copia de x, x aún es válido, ambos tienen el valor `5`
 
-let s1 = String::from("hello"); // String no implementa la trait Copy
-let s2 = s1; // s2 es un movimiento de s1, s1 ya no es válido
+let s1 = String::from("hello"); // String no implementa el trait Copy
+let s2 = s1; // s2 es un movimiento de s1, s1 ya no es válido, su pertenencia se movió a s2
 ```
-
-# Recursos
-
-Para repasar cualquiera de estos conceptos, te pueden ser útiles los siguientes recursos:
-
-- [Curso de Rust de Polkadot Hub](https://polkadothub.io/rust/0-presentaci%C3%B3n/0-presentation)
-- [The Rust Programming Language](https://doc.rust-lang.org/book/)
-- [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
-- [Rustlings](https://github.com/rust-lang/rustlings)
-- [Rust Cheat Sheet](https://cheats.rs/)
