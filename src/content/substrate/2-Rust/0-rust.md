@@ -1,10 +1,10 @@
 ---
-title: Rust para Substrate
+title: Módulo 2 - Rust
 module: 2
 draft: false
 ---
 
-# Rust para Substrate
+# Módulo 2 - Rust
 
 En este módulo, el foco estará puesto sobre Rust y aspectos específicos de este lenguaje que son relevantes para el uso de Substrate.
 

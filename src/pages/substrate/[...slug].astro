@@ -98,9 +98,6 @@ const { Content } = await entry.render();
 </Layout>
 
 <style is:global>
-  h1,h2 {
-    @apply text-black dark:text-white font-bold;
-  }
   h1 {
     @apply text-4xl sm:text-5xl;
   }
@@ -121,23 +118,38 @@ const { Content } = await entry.render();
     list-style: decimal;
     @apply px-5;
   }
+  .content h1,h2,h3,h4 {
+    @apply font-bold;
+  }
   .content h1 {
+    @apply text-4xl sm:text-5xl;
     @apply mt-12 mb-6 first:mt-0;
   }
   .content h2 {
+    @apply text-3xl sm:text-4xl;
     @apply mt-8 mb-4;
+  }
+  .content h3 {
+    @apply text-2xl sm:text-3xl;
+    @apply mt-6 mb-4;
   }
   .content a {
     @apply text-green hover:underline;
   }
   .content ul {
-    @apply my-5;
+    @apply mb-5;
   }
   .content {
     @apply mb-10;
     word-break: break-word;
   }
+  .content code {
+    @apply bg-[#0d1117] rounded p-1;
+  }
   .content pre {
-    @apply p-5;
+    @apply p-5 w-fit rounded mb-4;
+  }
+  .content pre code {
+    @apply bg-transparent;
   }
 </style>
