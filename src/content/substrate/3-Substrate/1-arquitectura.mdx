@@ -1,0 +1,112 @@
+---
+title: Arquitectura
+module: 3
+draft: false
+---
+
+import SubstrateDiagram from '../../../components/SubstrateDiagram.astro';
+
+# 1. Arquitectura
+
+Substrate está construído para ser, por encima de todo, modular y flexible.
+Crear una blockchain es dificil, hay que tener en cuenta muchos aspectos, como bases de datos, redes, colas de transacciones y mucho más.
+Todo esto antes de pensar en la lógica de negocio, que es lo que diferencia a una blockchain de las demás.
+Antes de frameworks como Substrate, la forma más sencilla de crear una blockchain era hacer un fork de una ya existente, como Bitcoin o Ethereum.
+
+En el módulo 1, vimos que las blockchains pueden verse como una máquina de estados distribuída, en la cual debe haber consenso sobre cada transición de estado.
+El estado es almacenado por todos los nodos de la red.
+La función de transición de estado, que determina cómo pasar de un estado actual al siguiente, es la función que diferencia una blockchain de otra.
+Esta función define las posibles transacciones que pueden ir en los bloques y cómo actúan.
+Luego de procesar cada bloque, el estado de la cadena pasa a uno nuevo.
+
+Substrate tiene dos componentes principales, que interactúan entre sí.
+Uno de ellos se conoce como el _host_, o cliente, que maneja todos los componentes mencionados previamente, bases de datos, redes, entre otros.
+El host se encarga de actividades como importar bloques, producir bloques y mandarlos a la red, entre otros.
+El otro componente es el _runtime_, es el que contiene la lógica de negocio de la chain, la función de transición de estado.
+El runtime maneja la validación y ejecución de bloques, entre otros, dado que estos son los aspectos que en general difieren de cadena a cadena.
+
+## Arquitectura de un bloque
+
+Los bloques se dividen en cabezal (o header) y cuerpo (o body).
+El cuerpo tiene una lista de _extrinsics_.
+Usualmente estos son transacciones, en el caso de Substrate, los extrinsics pueden ser de varios tipos:
+- Transacciones firmadas
+  - Requieren ser firmadas por la clave pública de la cuenta que hizo el pedido.
+    La mayoría de extrinsics son de este estilo.
+    Por ejemplo, transferencias de tokens.
+- Transacciones no firmadas
+  - No requieren una firma y no dan información sobre quien hizo el pedido.
+    Con estos extrinsics, economicamente no hay nada para frenar spam.
+	Se deben definir las condiciones para validar este tipo de extrinsics de tal manera de prevenir ataques.
+	Por ejemplo, un extrinsic `heartbeat` que permite a un validador anunciar que sigue conectado a la red.
+	En este caso, la condición es que el nodo sea un validador, ahí se le permite no pagar fees.
+- Inherentes
+  - Son un tipo especial de transacción no firmada, que permiten al nodo que produce el bloque agregar información directamente en él.
+    El ejemplo más común es un extrinsic `now` que permite al autor de un nodo poner una timestamp en el bloque.
+
+El cabezal tiene más campos:
+- Altura del bloque
+- Hash del bloque
+- Hash del bloque padre: Presente en todos menos el bloque génesis. Es el que "encadena" los bloques entre si.
+- Raíz del estado: El hash de la raíz del arbol de Merkle del estado que resulta de aplicar todos los bloques hasta este, inclusivo.
+- Raíz de los extrinsics: El hash de la lista de extrinsics.
+
+Debido a esta estructura, light clients, como [smoldot](https://docs.rs/smoldot/latest/smoldot/), son capaces de, solo con acceso a los cabezales, resolver consultas sobre el estado de la cadena.
+
+## Host functions y runtime APIs
+
+El host maneja la parte de networking, así que es el encargado de enviar bloques a y recibir bloques de otros participantes de la red.
+Sin embargo, es el runtime el que tiene la lógica para validar y ejecutar bloques.
+Por lo tanto, el host y el runtime deben comunicarse entre si.
+
+Esta comunicación se hace a partir de _host functions_ y _runtime apis_, interfaces que permiten al runtime acceder al host y al host acceder al runtime respectivamente.
+Algunas runtime apis son:
+- `AuraApi` para saber cuándo producir bloques
+- `BlockBuilder` para saber cómo crear los bloques
+- `GrandpaApi` para saber cuando finalizar bloques.
+
+Aunque es posible implementar nuestro propio runtime implementando estas interfaces, existen frameworks para hacer que el desarrollo de runtimes sea lo más sencillo posible, la más conocida siendo FRAME.
+
+## FRAME
+
+Notablemente se usa _FRAME_ (Framework for Runtime Aggregation of Modularized Entities) para crear runtimes.
+En FRAME, un runtime es un conjunto de _pallets_.
+Las pallets son módulos de lógica del runtime que pueden ser desarrollados para ser muy específicos o muy generales, pudiendo compartirse con la comunidad.
+Existen pallets con funcionalidades muy comunes en las blockchains, como son:
+- `pallet-balances`: Creación y manejo de un token fungible nativo
+- `pallet-assets`: Creación y manejo de muchos tokens fungibles, posiblemente derivados de otras chains
+- `pallet-uniques`: Creación y manejo de tokens no fungibles (NFTs)
+- `pallet-democracy`: Creación y manejo de propuestas que pueden ser votadas por todos
+
+Si bien este es el framework más usado para escribir runtimes, Substrate no asume que todos los runtimes son escritos con FRAME.
+Existen otras frameworks para escribir runtimes como [Tuxedo](https://github.com/Off-Narrative-Labs/Tuxedo), que mientras FRAME usa cuentas, usa [UTXOs](https://academy.bit2me.com/que-es-una-utxo/).
+
+## WebAssembly
+
+Además de implementar las runtime APIs, Substrate requiere que el runtime sea un binario de WebAssembly, o WASM.
+WASM es un formato de instrucciones binarias para una máquina virtual basada en una pila.
+Muchos lenguajes de programación pueden compilar a WASM además de a código de máquina, notablemente, Rust.
+
+WASM se usa para mucho más que para blockchain.
+Por su capacidad de ser ejecutado por los navegadores, abre la puerta a usar más lenguajes de programación para la web, con la ventaja añadida de que las aplicaciones de WASM tienden a ser más eficientes.
+
+WASM es un ambiente aislado, el cual asegura que un runtime potencialmente malicioso no pueda afectar el dispositivo sobre el que corre.
+
+Para apender más de WASM, recomendamos los siguientes materiales:
+- [Sitio oficial](https://webassembly.org/)
+- [Libro oficial](https://rustwasm.github.io/docs/book/)
+- [Libro: Art of WebAssembly](https://nostarch.com/art-webassembly)
+
+En el siguiente diagrama se muestra esta arquitectura de dos componentes.
+
+<SubstrateDiagram />
+
+El flujo de llamar un extrinsic en una cadena de Substrate es el siguiente:
+- Llega un bloque con el extrinsic a un nodo de Substrate mediante la capa de libp2p del host
+- El host se comunica con el runtime mediante su API para que procese el bloque
+- El runtime procesa cada extrinsic y se comunica con el host para actualizar la base de datos con los cambios necesarios
+
+El WASM del runtime se almacena en la base de datos, al igual que cualquier otro elemento de estado.
+Esto permite actualizar la cadena simplemente llamando un extrinsic con el nuevo binario para reemplazar el anterior, lo cual permite actualizaciones _forkless_.
+Las _forkless upgrades_ nos permiten iterar mucho más rápido en el desarrollo del runtime, reduciendo la complejidad de actualizarlo.
+Veremos un ejemplo de esto más adelante.
