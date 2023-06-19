@@ -1,6 +1,7 @@
 ---
 title: Estructura de una pallet
 module: 4
+draft: false
 ---
 
 # 1. Estructura de una pallet

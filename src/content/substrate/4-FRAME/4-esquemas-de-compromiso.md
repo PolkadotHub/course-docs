@@ -1,6 +1,7 @@
 ---
 title: Esquemas de compromiso
 module: 4
+draft: false
 ---
 
 # 4. Esquemas de compromiso

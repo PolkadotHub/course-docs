@@ -1,7 +1,7 @@
 ---
 title: Módulo 4 - Introducción
 module: 4
-checklist: ['Pronto']
+draft: false
 ---
 
 # Módulo 4 - FRAME

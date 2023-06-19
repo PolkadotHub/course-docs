@@ -1,6 +1,7 @@
 ---
 title: Renombrar pallet
 module: 4
+draft: false
 ---
 
 # 2. Renombrar pallet

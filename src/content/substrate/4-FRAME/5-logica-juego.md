@@ -1,6 +1,7 @@
 ---
 title: Lógica del juego
 module: 4
+draft: false
 ---
 
 # 5. Lógica del juego

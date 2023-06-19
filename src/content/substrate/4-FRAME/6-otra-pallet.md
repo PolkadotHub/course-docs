@@ -1,6 +1,7 @@
 ---
 title: Agregar otra pallet
 module: 4
+draft: false
 ---
 
 # 6. Agregar otra pallet
@@ -117,7 +118,7 @@ También son necesarios algunos imports y aliases de tipos.
 
 ## Usando Currency
 
-Vamos a ir con el acoplamiento loose debido a su flexibilidad.
+Vamos a usar el acoplamiento loose debido a su flexibilidad.
 Nuestra pallet funcionará siempre y cuando usemos una implementación del trait `Currency`.
 Esto permite usar otras implementaciones distintas a pallet-balances.
 

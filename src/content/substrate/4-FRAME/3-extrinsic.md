@@ -1,6 +1,7 @@
 ---
 title: Primer extrinsic
 module: 4
+draft: false
 ---
 
 # 3. Primer extrinsic

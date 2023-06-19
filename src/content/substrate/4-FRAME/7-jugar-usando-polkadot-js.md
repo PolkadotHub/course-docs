@@ -1,6 +1,7 @@
 ---
 title: "!A jugar!"
 module: 4
+draft: false
 ---
 
 # 7. ¡A jugar!
@@ -21,7 +22,8 @@ El flujo es:
 
 Lo más complicado es conseguir el hash para la etapa de compromiso.
 El procedimiento es el mismo que hicimos en el test, así que podemos crear un test solo para generar dos hashes, imprimirlos y copiarlos de ahí.
-Este es el aspecto con pero UX a la hora de jugar.
+Este es el aspecto con peor UX a la hora de jugar.
+Para producción, lo mejor sería una UI en la que al elegir la jugada ya se elija un número aleatorio seguro y nos copie el hash y el nonce.
 
 Hay una función en [el repo](https://github.com/franciscoaguirre/substrate-piedra-papel-tijera/blob/main/pallets/piedra-papel-tijera/src/utils.rs), `conseguir_compromiso`, que puede ser útil.
 
