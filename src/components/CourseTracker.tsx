@@ -53,7 +53,7 @@ export const CourseTracker: Component<CourseTrackerProps> = (props) => {
               <li class="group">
                 <button
                   classList={{
-                    "w-5 h-full px-5 py-2 flex justify-center items-center group-first:rounded-tl":
+                    "w-5 h-full px-5 py-2 flex justify-center items-center group-first:rounded-tl group-last:rounded-bl":
                       true,
                     "dark:bg-green-dark bg-green-light":
                       activeTab() === index && props.track === Track.Substrate,
@@ -88,7 +88,7 @@ const Tab: Component<TabProps> = (props) => {
   return (
     <ul
       class={clsx(
-        "list-none p-2 rounded-b flex flex-grow flex-col",
+        "list-none p-2 rounded-br rounded-tr flex flex-grow flex-col",
         props.track === Track.Substrate &&
           "dark:bg-green-dark bg-green-light",
         props.track === Track.Rust &&
