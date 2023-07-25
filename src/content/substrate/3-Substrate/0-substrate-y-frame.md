@@ -15,3 +15,9 @@ Vamos a aprender:
 - Cómo está organizado el código de un proyecto de Substrate y FRAME
 - Cómo integrar lógica de negocio reutilizable a una blockchain usando FRAME
 - Cuándo usar contratos inteligentes
+
+## Grabación de la clase de este módulo
+
+<div class="flex justify-center items-center">
+  <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/RNqWK6T8iPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
