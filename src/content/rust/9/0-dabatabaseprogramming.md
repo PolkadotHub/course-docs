@@ -16,4 +16,5 @@ Algunos de los ORM más populares en Rust son Diesel, Rustorm, y SQLx. Diesel es
 
 El uso de un ORM en Rust puede simplificar el trabajo con bases de datos relacionales al abstraer gran parte del código de SQL y permitir que los desarrolladores se centren en trabajar con modelos de objetos. Además, los ORM pueden proporcionar características como la validación de datos, el control de versiones de esquemas y la integración con otros marcos y herramientas.
 
-
+Para más información y detalles:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NCZ9Uo3Irrc?si=oEet1OHAWdWog-l4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
