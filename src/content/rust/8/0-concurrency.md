@@ -15,3 +15,5 @@ Rust ofrece varios mecanismos para manejar la programación concurrente de forma
 
 Además de estos mecanismos, Rust también ofrece soporte para programación asíncrona a través de la biblioteca estándar async/await. Esta biblioteca permite crear código asíncrono de forma sencilla y eficiente, sin necesidad de crear threads adicionales.
 
+<iframe class="w-full aspect-video" src="https://youtu.be/TkrkL7qWtd4?si=VB8Xo6tREvYt5hv-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
